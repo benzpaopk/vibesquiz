@@ -33,7 +33,7 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
               <Link
-                href="/quiz/random"
+                href="/quizzes/who-are-you-on-christmas-day/question/1"
                 className="flex items-center justify-center gap-2 rounded-full h-14 px-8 bg-primary hover:bg-red-700 text-white text-base font-bold transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 transform hover:-translate-y-0.5"
               >
                 <span className="material-symbols-outlined" aria-hidden="true">

@@ -25,7 +25,7 @@ export default function QuizzesHero() {
           </div>
           <div className="flex gap-4">
             <Link
-              href="/quiz/who-are-you-on-christmas-day/start"
+              href="/quizzes/who-are-you-on-christmas-day/question/1"
               className="flex h-12 items-center justify-center rounded-full bg-primary px-8 text-base font-bold text-white shadow-lg shadow-primary/30 transition-all hover:bg-red-600 hover:shadow-xl"
             >
               Start Quiz
