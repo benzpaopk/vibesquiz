@@ -41,7 +41,9 @@ export default function ResultPage() {
 
   // Handle Play Again - reset quiz and redirect to first question
   const handlePlayAgain = () => {
+    // Reset quiz state first
     resetQuiz();
+    // Navigate to first question after reset
     router.push('/quizzes/who-are-you-on-christmas-day/question/1');
   };
 
