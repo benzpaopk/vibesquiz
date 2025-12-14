@@ -55,7 +55,11 @@ export default function QuizHero({ quizData }: QuizHeroProps) {
 
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-4">
             <Link
-              href={`/quiz/${quizData.slug || 'who-are-you-on-christmas-day'}/start`}
+              href={
+                quizData.slug === 'who-are-you-on-christmas-day'
+                  ? '/quizzes/who-are-you-on-christmas-day/question/1'
+                  : `/quiz/${quizData.slug || 'who-are-you-on-christmas-day'}/start`
+              }
               className="group relative flex items-center justify-center h-14 px-8 rounded-full bg-primary text-white text-lg font-bold shadow-[0_0_20px_rgba(236,19,19,0.4)] hover:shadow-[0_0_30px_rgba(236,19,19,0.6)] hover:scale-105 transition-all duration-300 w-full sm:w-auto overflow-hidden"
             >
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full" />

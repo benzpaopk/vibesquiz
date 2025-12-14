@@ -3,7 +3,6 @@ import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import StatsBar from '@/components/StatsBar';
 import QuizCollections from '@/components/QuizCollections';
-import SocialShare from '@/components/SocialShare';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
@@ -30,7 +29,6 @@ export default function HomePage() {
         <Hero />
         <StatsBar />
         <QuizCollections />
-        <SocialShare />
       </main>
       <Footer />
     </div>

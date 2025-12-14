@@ -19,6 +19,7 @@ interface QuizResultsProps {
   };
   sessionId: string;
   quizSlug: string;
+  onRetake?: () => void;
 }
 
 /**
@@ -26,7 +27,7 @@ interface QuizResultsProps {
  * 
  * Displays quiz results with character reveal, stats, and sharing options.
  */
-export default function QuizResults({ results, sessionId, quizSlug }: QuizResultsProps) {
+export default function QuizResults({ results, sessionId, quizSlug, onRetake }: QuizResultsProps) {
   const router = useRouter();
   const [isSharing, setIsSharing] = useState(false);
 
@@ -78,13 +79,13 @@ export default function QuizResults({ results, sessionId, quizSlug }: QuizResult
   };
 
   const handleRetake = () => {
-    router.push(`/quiz/${quizSlug}/start`);
+    if (onRetake) {
+      onRetake();
+    } else {
+      router.push(`/quiz/${quizSlug}/start`);
+    }
   };
 
-  const stats = results.stats || {
-    naughtiness: Math.floor(Math.random() * 40) + 60, // 60-100%
-    holidaySpirit: Math.floor(Math.random() * 30) + 10, // 10-40%
-  };
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden bg-background-light dark:bg-background-dark">
@@ -179,57 +180,6 @@ export default function QuizResults({ results, sessionId, quizSlug }: QuizResult
                 {/* Description */}
                 <div className="bg-surface-darker/50 rounded-xl p-5 border border-white/5">
                   <p className="text-gray-300 text-lg leading-relaxed">{results.description}</p>
-                </div>
-
-                {/* Stats Section */}
-                <div className="grid grid-cols-2 gap-4 mt-2">
-                  {/* Naughtiness Stat */}
-                  <div className="flex flex-col gap-3 rounded-xl p-4 bg-white/5 border border-white/5">
-                    <div className="flex justify-between items-center">
-                      <p className="text-white/80 text-sm font-bold uppercase tracking-wide">
-                        Naughtiness
-                      </p>
-                      <span
-                        className="material-symbols-outlined text-primary"
-                        aria-hidden="true"
-                      >
-                        local_fire_department
-                      </span>
-                    </div>
-                    <div className="flex items-end gap-2">
-                      <p className="text-white text-3xl font-black">{stats.naughtiness}%</p>
-                      <div className="h-2 flex-1 bg-white/10 rounded-full mb-2 overflow-hidden">
-                        <div
-                          className="h-full bg-primary rounded-full shadow-[0_0_10px_rgba(236,19,19,0.5)] transition-all duration-500"
-                          style={{ width: `${stats.naughtiness}%` }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Holiday Spirit Stat */}
-                  <div className="flex flex-col gap-3 rounded-xl p-4 bg-white/5 border border-white/5">
-                    <div className="flex justify-between items-center">
-                      <p className="text-white/80 text-sm font-bold uppercase tracking-wide">
-                        Holiday Spirit
-                      </p>
-                      <span
-                        className="material-symbols-outlined text-green-400"
-                        aria-hidden="true"
-                      >
-                        sentiment_satisfied
-                      </span>
-                    </div>
-                    <div className="flex items-end gap-2">
-                      <p className="text-white text-3xl font-black">{stats.holidaySpirit}%</p>
-                      <div className="h-2 flex-1 bg-white/10 rounded-full mb-2 overflow-hidden">
-                        <div
-                          className="h-full bg-green-400 rounded-full shadow-[0_0_10px_rgba(74,222,128,0.5)] transition-all duration-500"
-                          style={{ width: `${stats.holidaySpirit}%` }}
-                        />
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
 
