@@ -23,7 +23,7 @@ interface QuizCardProps {
  * Displays a single quiz with image, title, description, and CTA button.
  */
 export default function QuizCard({ quiz }: QuizCardProps) {
-  const buttonText = quiz.badge === 'new' ? 'Take Quiz' : quiz.title === 'Gift Guru' ? 'Find Out' : 'Play Now';
+  const buttonText = quiz.badge === 'new' ? 'ทำแบบทดสอบ' : quiz.title === 'กูรูของขวัญ' ? 'ค้นหา' : 'เล่นเลย';
 
   return (
     <div className="group relative flex flex-col rounded-[2rem] bg-white dark:bg-surface-dark border border-gray-200 dark:border-[#392828] overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10">
@@ -40,7 +40,7 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                 star
               </span>
             )}
-            <span>{quiz.badge === 'popular' ? 'Popular' : 'New'}</span>
+            <span>{quiz.badge === 'popular' ? 'ยอดนิยม' : 'ใหม่'}</span>
           </div>
         )}
 

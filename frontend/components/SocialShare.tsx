@@ -7,7 +7,7 @@
  */
 export default function SocialShare() {
   const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
-  const shareText = 'Check out VibeQuiz - Holiday Personality Quizzes!';
+  const shareText = 'ลองดู VibeQuiz - แบบทดสอบบุคลิกภาพวันหยุด!';
 
   const handleShare = (platform: 'tiktok' | 'twitter' | 'instagram') => {
     const urls = {
@@ -18,7 +18,7 @@ export default function SocialShare() {
 
     if (platform === 'instagram') {
       // Instagram doesn't support direct URL sharing, open app or show message
-      alert('Share on Instagram by copying the link and posting it in your story!');
+      alert('แชร์บน Instagram โดยคัดลอกลิงก์และโพสต์ในสตอรี่ของคุณ!');
       return;
     }
 
@@ -27,7 +27,7 @@ export default function SocialShare() {
 
   return (
     <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 bg-white/90 dark:bg-[#181111]/90 backdrop-blur-xl border border-gray-200 dark:border-[#392828] p-2 rounded-full shadow-2xl flex items-center gap-2">
-      <span className="px-3 text-xs font-bold text-gray-500 uppercase">Share</span>
+      <span className="px-3 text-xs font-bold text-gray-500 uppercase">แชร์</span>
       <button
         onClick={() => handleShare('tiktok')}
         className="size-10 rounded-full bg-black text-white hover:bg-gray-800 flex items-center justify-center transition-colors"

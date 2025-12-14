@@ -52,7 +52,7 @@ export default function QuizQuestion({
       <div className="text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
           <span className="text-sm font-bold text-primary">
-            Question {questionNumber} of 10
+            คำถามข้อที่ {questionNumber} จาก 10
           </span>
         </div>
         <h2 className="text-3xl md:text-4xl font-bold text-[#181111] dark:text-white leading-tight">
@@ -132,7 +132,7 @@ export default function QuizQuestion({
           <span className="material-symbols-outlined" aria-hidden="true">
             arrow_back
           </span>
-          Previous
+          ก่อนหน้า
         </button>
 
         <button
@@ -148,7 +148,7 @@ export default function QuizQuestion({
             }
           `}
         >
-          {isLastQuestion ? 'See Results' : 'Next'}
+          {isLastQuestion ? 'ดูผลลัพธ์' : 'ถัดไป'}
           <span className="material-symbols-outlined" aria-hidden="true">
             {isLastQuestion ? 'emoji_events' : 'arrow_forward'}
           </span>

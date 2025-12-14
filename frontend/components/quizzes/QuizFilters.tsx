@@ -18,26 +18,26 @@ export default function QuizFilters() {
   const [activeFilter, setActiveFilter] = useState('popular');
 
   const filters: Filter[] = [
-    { id: 'popular', label: 'Popular', icon: 'local_fire_department' },
-    { id: 'love', label: 'Love Life', icon: 'favorite' },
-    { id: 'office', label: 'Office Party', icon: 'work' },
-    { id: 'wholesome', label: 'Wholesome', icon: 'sentiment_very_satisfied' },
-    { id: 'naughty', label: 'Naughty List', icon: 'warning' },
-    { id: 'movies', label: 'Movies', icon: 'movie' },
+    { id: 'popular', label: 'ยอดนิยม', icon: 'local_fire_department' },
+    { id: 'love', label: 'ความรัก', icon: 'favorite' },
+    { id: 'office', label: 'ปาร์ตี้ออฟฟิศ', icon: 'work' },
+    { id: 'wholesome', label: 'ดีงาม', icon: 'sentiment_very_satisfied' },
+    { id: 'naughty', label: 'รายชื่อซน', icon: 'warning' },
+    { id: 'movies', label: 'ภาพยนตร์', icon: 'movie' },
   ];
 
   return (
     <section className="flex flex-col gap-6" id="quizzes">
       <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
         <div className="flex flex-col gap-1">
-          <h2 className="text-3xl font-bold tracking-tight text-white">Trending Themes</h2>
-          <p className="text-[#b99d9d]">Curated quizzes blowing up on TikTok right now.</p>
+          <h2 className="text-3xl font-bold tracking-tight text-white">ธีมกำลังฮิต</h2>
+          <p className="text-[#b99d9d]">แบบทดสอบที่คัดสรรแล้วกำลังฮิตบน TikTok ตอนนี้</p>
         </div>
         <Link
           href="#"
           className="group flex items-center gap-1 text-sm font-bold text-primary transition-colors hover:text-red-600"
         >
-          See all themes
+          ดูธีมทั้งหมด
           <span
             className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1"
             aria-hidden="true"

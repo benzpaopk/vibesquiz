@@ -36,16 +36,16 @@ export async function generateMetadata({ params }: QuizPageProps): Promise<Metad
 function getQuizData(slug: string) {
   const quizzes: Record<string, { title: string; description: string }> = {
     'who-are-you-on-christmas-day': {
-      title: 'Who Are You on Christmas Day?',
+      title: 'คุณเป็นใครในวันคริสต์มาส?',
       description:
-        'Are you a kind-hearted Santa? A mischievous elf? Or a reindeer guide? Find your true persona in just 2 minutes!',
+        'คุณเป็นซานต้าที่ใจดี? เอลฟ์ที่ซน? หรือไกด์กวางเรนเดียร์? ค้นหาบุคลิกภาพที่แท้จริงของคุณในเวลาเพียง 2 นาที!',
     },
   };
 
   return (
     quizzes[slug] || {
-      title: 'Holiday Personality Quiz',
-      description: 'Discover your holiday personality with our fun quiz!',
+      title: 'แบบทดสอบบุคลิกภาพวันหยุด',
+      description: 'ค้นพบบุคลิกภาพวันหยุดของคุณด้วยแบบทดสอบสนุกๆ ของเรา!',
     }
   );
 }

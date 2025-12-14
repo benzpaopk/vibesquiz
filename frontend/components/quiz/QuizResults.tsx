@@ -123,7 +123,7 @@ export default function QuizResults({ results, sessionId, quizSlug, onRetake }: 
               onClick={handleRetake}
               className="hidden sm:flex h-10 px-5 items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-white text-sm font-bold border border-white/10 transition-all"
             >
-              Retake Quiz
+              ทำใหม่
             </button>
             <button className="sm:hidden text-white" aria-label="Menu">
               <span className="material-symbols-outlined" aria-hidden="true">
@@ -140,13 +140,13 @@ export default function QuizResults({ results, sessionId, quizSlug, onRetake }: 
           {/* Page Heading */}
           <div className="flex flex-col gap-2 text-center md:text-left animate-fade-in-up">
             <p className="text-primary font-bold uppercase tracking-widest text-sm">
-              Result Calculated
+              คำนวณผลลัพธ์แล้ว
             </p>
             <h1 className="text-white text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
-              Your Christmas Persona Is...
+              บุคลิกภาพคริสต์มาสของคุณคือ...
             </h1>
             <p className="text-white/60 text-lg font-medium max-w-2xl">
-              Based on your questionable life choices, the AI has generated your holiday alter-ego.
+              จากทางเลือกในชีวิตที่น่าสงสัยของคุณ AI ได้สร้างบุคลิกภาพวันหยุดของคุณแล้ว
             </p>
           </div>
 
@@ -209,8 +209,8 @@ export default function QuizResults({ results, sessionId, quizSlug, onRetake }: 
           {/* Footer / Share Actions */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-6 border-t border-white/10">
             <div className="flex flex-col gap-1">
-              <h3 className="text-white text-xl font-bold">Expose yourself to friends:</h3>
-              <p className="text-white/50 text-sm">Don't worry, they probably already know.</p>
+              <h3 className="text-white text-xl font-bold">เปิดเผยตัวเองให้เพื่อนๆ:</h3>
+              <p className="text-white/50 text-sm">ไม่ต้องกังวล พวกเขาน่าจะรู้อยู่แล้ว</p>
             </div>
             <div className="flex items-center gap-4">
               <button
@@ -248,7 +248,7 @@ export default function QuizResults({ results, sessionId, quizSlug, onRetake }: 
                 <span className="material-symbols-outlined" aria-hidden="true">
                   share
                 </span>
-                <span>{isSharing ? 'Link Copied!' : 'Share Link'}</span>
+                <span>{isSharing ? 'คัดลอกลิงก์แล้ว!' : 'แชร์ลิงก์'}</span>
               </button>
             </div>
           </div>

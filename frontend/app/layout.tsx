@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Prompt } from 'next/font/google';
 import './globals.css';
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '700', '800'],
+const prompt = Prompt({
+  subsets: ['latin', 'thai'],
+  weight: ['300', '400', '500', '700'],
   variable: '--font-display',
 });
 
@@ -35,7 +35,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${plusJakartaSans.variable} bg-background-light dark:bg-background-dark font-body text-gray-900 dark:text-white overflow-x-hidden`}
+        className={`${prompt.variable} bg-background-light dark:bg-background-dark font-body text-gray-900 dark:text-white overflow-x-hidden`}
       >
         {children}
       </body>

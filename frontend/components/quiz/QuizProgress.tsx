@@ -76,7 +76,7 @@ export default function QuizProgress({
                           : 'bg-gray-200 dark:bg-[#392828] text-gray-500 dark:text-gray-400'
                   }
                 `}
-                title={`Question ${questionNum}${isAnswered ? ' (answered)' : ''}`}
+                title={`คำถามข้อที่ ${questionNum}${isAnswered ? ' (ตอบแล้ว)' : ''}`}
               >
                 {questionNum}
               </div>

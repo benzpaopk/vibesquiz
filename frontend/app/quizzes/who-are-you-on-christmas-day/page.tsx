@@ -27,9 +27,9 @@ export default function ChristmasQuizLandingPage() {
   }, [resetQuiz]);
 
   const quizData = {
-    title: 'Who Are You on Christmas Day?',
+    title: 'คุณเป็นใครในวันคริสต์มาส?',
     description:
-      'Are you a kind-hearted Santa? A mischievous elf? Or a reindeer guide? Find your true persona in just 2 minutes!',
+      'คุณเป็นซานต้าที่ใจดี? เอลฟ์ที่ซน? หรือไกด์กวางเรนเดียร์? ค้นหาบุคลิกภาพที่แท้จริงของคุณในเวลาเพียง 2 นาที!',
     slug: 'who-are-you-on-christmas-day',
   };
 

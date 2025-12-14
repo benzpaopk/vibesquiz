@@ -27,16 +27,16 @@ export default function QuizHero({ quizData }: QuizHeroProps) {
               verified
             </span>
             <span className="text-xs font-bold text-primary uppercase tracking-wider">
-              Trending #1 Quiz
+              แบบทดสอบ #1 กำลังฮิต
             </span>
           </div>
 
           <div className="flex flex-col gap-4">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-[#181111] dark:text-white drop-shadow-sm">
-              Who Are You on
+              คุณเป็นใครใน
               <br />
               <span className="text-primary relative inline-block">
-                Christmas Day?
+                วันคริสต์มาส?
                 {/* Underline decoration */}
                 <svg
                   className="absolute w-full h-3 -bottom-1 left-0 text-white dark:text-white opacity-30"
@@ -64,7 +64,7 @@ export default function QuizHero({ quizData }: QuizHeroProps) {
             >
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full" />
               <span className="relative z-10 flex items-center gap-2">
-                Start Quiz Now!
+                เริ่มทำแบบทดสอบเลย!
                 <span
                   className="material-symbols-outlined group-hover:translate-x-1 transition-transform"
                   aria-hidden="true"
@@ -77,7 +77,7 @@ export default function QuizHero({ quizData }: QuizHeroProps) {
               type="button"
               className="flex items-center justify-center h-14 px-6 rounded-full bg-transparent border-2 border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-white/5 text-[#181111] dark:text-white text-base font-bold transition-all w-full sm:w-auto"
             >
-              View Preview
+              ดูตัวอย่าง
             </button>
           </div>
 
@@ -91,7 +91,7 @@ export default function QuizHero({ quizData }: QuizHeroProps) {
                 />
               ))}
             </span>
-            <span>10,000+ played today</span>
+            <span>10,000+ คนเล่นวันนี้</span>
           </div>
         </div>
 
@@ -110,8 +110,8 @@ export default function QuizHero({ quizData }: QuizHeroProps) {
 
             {/* Overlay Content on Image */}
             <div className="absolute bottom-4 left-4 right-4 bg-black/40 backdrop-blur-md p-4 rounded-2xl border border-white/10">
-              <p className="text-white font-bold text-sm">🎅 Character Reveal</p>
-              <p className="text-gray-200 text-xs">Unlock your true persona</p>
+              <p className="text-white font-bold text-sm">🎅 เปิดเผยตัวละคร</p>
+              <p className="text-gray-200 text-xs">ปลดล็อกบุคลิกภาพที่แท้จริงของคุณ</p>
             </div>
           </div>
 

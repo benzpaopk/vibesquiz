@@ -19,16 +19,16 @@ export default function Hero() {
               <span className="material-symbols-outlined text-sm" aria-hidden="true">
                 auto_awesome
               </span>
-              <span className="text-xs font-bold uppercase tracking-wider">Trending Now</span>
+              <span className="text-xs font-bold uppercase tracking-wider">กำลังฮิต</span>
             </div>
 
             <h1 className="text-gray-900 dark:text-white text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-[-0.033em]">
-              Sleigh The <span className="text-primary">Season</span>
+              ตกแต่ง <span className="text-primary">เทศกาล</span>
             </h1>
 
             <h2 className="text-gray-600 dark:text-gray-300 text-lg md:text-xl font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
-              Discover your inner elf. Take the ultimate holiday personality test today and find
-              out which festive vibe matches your soul.
+              ค้นพบเอลฟ์ในตัวคุณ ทำแบบทดสอบบุคลิกภาพวันหยุดที่ยอดเยี่ยมวันนี้และค้นหาว่า
+              วิบวับเทศกาลไหนที่เข้ากับจิตวิญญาณของคุณ
             </h2>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
@@ -39,13 +39,13 @@ export default function Hero() {
                 <span className="material-symbols-outlined" aria-hidden="true">
                   play_arrow
                 </span>
-                <span>Start Random Quiz</span>
+                <span>เริ่มเล่นเลย</span>
               </Link>
               <Link
                 href="/quizzes"
                 className="flex items-center justify-center gap-2 rounded-full h-14 px-8 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 hover:border-primary/50 text-gray-900 dark:text-white text-base font-bold transition-all"
               >
-                <span>Explore Themes</span>
+                <span>สำรวจธีม</span>
               </Link>
             </div>
           </div>
@@ -75,7 +75,7 @@ export default function Hero() {
                   ))}
                 </div>
                 <div className="text-xs font-bold text-gray-900 dark:text-white">
-                  <span className="text-primary">14k+</span> took this today
+                  <span className="text-primary">14k+</span> คนเล่นวันนี้
                 </div>
               </div>
             </div>

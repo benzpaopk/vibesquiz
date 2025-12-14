@@ -29,7 +29,7 @@ export default function QuizStartPage() {
     <div className="flex min-h-screen items-center justify-center bg-background-light dark:bg-background-dark">
       <div className="text-center">
         <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent text-primary" />
-        <p className="mt-4 text-gray-600 dark:text-gray-400">Starting quiz...</p>
+        <p className="mt-4 text-gray-600 dark:text-gray-400">กำลังเริ่มแบบทดสอบ...</p>
       </div>
     </div>
   );

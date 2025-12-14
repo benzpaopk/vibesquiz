@@ -118,7 +118,7 @@ export default function QuestionPage({ params }: QuestionPageProps) {
       <div className="flex min-h-screen items-center justify-center bg-background-light dark:bg-background-dark">
         <div className="text-center">
           <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent text-primary" />
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading question...</p>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">กำลังโหลดคำถาม...</p>
         </div>
       </div>
     );
@@ -128,12 +128,12 @@ export default function QuestionPage({ params }: QuestionPageProps) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background-light dark:bg-background-dark">
         <div className="text-center">
-          <p className="text-red-500">{error || 'Question not found'}</p>
+          <p className="text-red-500">{error || 'ไม่พบคำถาม'}</p>
           <button
             onClick={() => router.push(`/quizzes/${slug}`)}
             className="mt-4 rounded-full bg-primary px-6 py-2 text-white"
           >
-            Back to Quiz
+            กลับไปแบบทดสอบ
           </button>
         </div>
       </div>
@@ -171,7 +171,7 @@ export default function QuestionPage({ params }: QuestionPageProps) {
 function generateMockQuestions() {
   return Array.from({ length: 10 }, (_, i) => ({
     id: i + 1,
-    text: `Question ${i + 1}: What best describes your holiday style?`,
+    text: `คำถามข้อที่ ${i + 1}: อะไรที่อธิบายสไตล์วันหยุดของคุณได้ดีที่สุด?`,
     options: [
       { id: 'A', text: 'Option A' },
       { id: 'B', text: 'Option B' },

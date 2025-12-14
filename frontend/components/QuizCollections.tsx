@@ -21,10 +21,10 @@ export default function QuizCollections() {
   const quizzes: Quiz[] = [
     {
       id: '1',
-      title: 'The Classics',
+      title: 'คลาสสิก',
       description:
-        'Test your knowledge on traditional holiday trivia. Are you a true believer or just here for the cookies?',
-      category: 'Traditional',
+        'ทดสอบความรู้ของคุณเกี่ยวกับเรื่องราววันหยุดแบบดั้งเดิม คุณเป็นผู้เชื่อตัวจริงหรือแค่มาที่นี่เพื่อคุกกี้?',
+      category: 'ดั้งเดิม',
       categoryIcon: 'cookie',
       imageUrl:
         'https://lh3.googleusercontent.com/aida-public/AB6AXuBuqSFwkvWWZ7IVPM0OQzhfBSBUcCp9BkqLdorkKsEAQdFj-H8JymcJh1o3Bx6uFkAw9W_z-xJhxGSIjjVSjkNuZ0Bv8728MWFa-ZpwrGo670UiwcghBGHWZi91PN7D2CQ1RM9hOwLtDutJnKhfuyLB5FCF5X1LkzbhGrlQ6d2ZXRDVXCM4YKrLx8PL77ICqzHYWIK0KEmEBuSqxg9tiVurZKlt5jN2LF7qA8lD6g5SMuKoljtfFtL-KYBmBXwuH6fSWVXUJyQajs1c',
@@ -34,9 +34,9 @@ export default function QuizCollections() {
     },
     {
       id: '2',
-      title: 'Vibe Check',
+      title: 'เช็ควิบวับ',
       description:
-        'Which holiday aesthetic matches your playlist? From Y2K Christmas to Cottagecore Winter.',
+        'สุนทรียภาพวันหยุดไหนที่เข้ากับเพลย์ลิสต์ของคุณ? จาก Y2K Christmas ไปจนถึง Cottagecore Winter',
       category: 'Gen Z',
       categoryIcon: 'headphones',
       imageUrl:
@@ -47,10 +47,10 @@ export default function QuizCollections() {
     },
     {
       id: '3',
-      title: 'Gift Guru',
+      title: 'กูรูของขวัญ',
       description:
-        'Are you a last-minute shopper or a thoughtful planner? Find out your gifting persona.',
-      category: 'Personality',
+        'คุณเป็นคนช้อปปิ้งนาทีสุดท้ายหรือนักวางแผนที่รอบคอบ? ค้นหาบุคลิกภาพการให้ของขวัญของคุณ',
+      category: 'บุคลิกภาพ',
       categoryIcon: 'redeem',
       imageUrl:
         'https://lh3.googleusercontent.com/aida-public/AB6AXuDFV6XPscGv280K-d_yLilMLmfWxiwu9PE5HXzHAYbOeExEjcCnr55Urzib6XvzESk8Di4v6AM10s7Qn2cUEbAE-YSQAs_pu7XoXiyha_lD5DR9bRxPG1gQfaEDTbs8TaQDMJV3waOIBEwcJ_j9oP4gRGYj_rhpAaYQNo2Mg4akF-H5Gw6wY90dQUkFWMJJZYt01j2xVN-ToCYpcdduTts8G5quPcDY4RwEfjin9J3GB-gvi21BYERAWpDGcxfKuQBGbuNS0z3Yoyg9',
@@ -64,11 +64,11 @@ export default function QuizCollections() {
       {/* Header */}
       <div className="w-full max-w-[1200px] px-4 md:px-10 pt-16 pb-8 text-center">
         <h2 className="text-gray-900 dark:text-white text-3xl md:text-4xl font-black leading-tight mb-3">
-          Pick Your Holiday Theme
+          เลือกธีมวันหยุดของคุณ
         </h2>
         <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          Explore our curated collections of festive personality tests. From nostalgic classics to
-          modern vibes.
+          สำรวจคอลเลกชันแบบทดสอบบุคลิกภาพเทศกาลที่คัดสรรแล้วของเรา จากคลาสสิกที่น่าจดจำ
+          ไปจนถึงวิบวับสมัยใหม่
         </p>
       </div>
 

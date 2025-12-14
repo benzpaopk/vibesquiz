@@ -62,7 +62,7 @@ export default function ResultsPage({ params }: ResultsPageProps) {
         if (updatedSession && updatedSession.answers && updatedSession.answers.length >= 10) {
           session.answers = updatedSession.answers;
         } else {
-          setError('Quiz not completed. Please answer all 10 questions.');
+          setError('แบบทดสอบยังไม่เสร็จสมบูรณ์ กรุณาตอบคำถามทั้ง 10 ข้อ');
           return;
         }
       }
@@ -91,27 +91,27 @@ export default function ResultsPage({ params }: ResultsPageProps) {
     // In production, this would be done server-side
     const resultTypes = [
       {
-        character: 'The Chaotic Elf',
+        character: 'เอลฟ์ยุ่งเหยิง',
         description:
-          'You claimed you\'d buy gifts in November, but here you are panic-shopping on the 24th. Your toxic trait is eating all the cookies before Santa arrives and blaming the dog. You are the life of the party, but the death of any organized plan.',
+          'คุณบอกว่าคุณจะซื้อของขวัญในเดือนพฤศจิกายน แต่ตอนนี้คุณกำลังช้อปปิ้งแบบตื่นตระหนกในวันที่ 24 ลักษณะที่เป็นพิษของคุณคือการกินคุกกี้ทั้งหมดก่อนที่ซานต้าจะมาถึงและโทษสุนัข คุณเป็นชีวิตของปาร์ตี้ แต่เป็นความตายของแผนที่จัดระเบียบใดๆ',
         imageUrl:
           'https://lh3.googleusercontent.com/aida-public/AB6AXuCm0w85ZaKTbiIspPRaoDjvhiPny_fRci40pnLiLbetsZ0wfZYWZvvl5Q9Buv6ItSFP9Vh340KWbwtULtd5Ybhx5hUao6VIO-AmpUNgrhNkuI4SE1WZ1wLbnlJjkvf9bSc_nm6K963HBJdZGYLVw9ZaOb7G2xKIC7FYPFJKf4nE3fBXh5jaAt9hdCLDoftb82e2gH1-d_g8jGb_xzwLdZt_XOJUCfEwIxoY-iCYrBNLOPGaF7v99XqjPBjrssjzMjoczWiSuwiCA_ro',
         archetype: 'Archetype #042',
         stats: { naughtiness: 95, holidaySpirit: 12 },
       },
       {
-        character: 'The Kind Santa',
+        character: 'ซานต้าที่ใจดี',
         description:
-          'You\'re the friend who remembers everyone\'s favorite cookie and actually sends cards on time. Your holiday spirit is unmatched, and you make everyone feel special. You probably started shopping in July.',
+          'คุณเป็นเพื่อนที่จำคุกกี้โปรดของทุกคนและส่งการ์ดตรงเวลา จิตวิญญาณวันหยุดของคุณไม่มีใครเทียบได้ และคุณทำให้ทุกคนรู้สึกพิเศษ คุณน่าจะเริ่มช้อปปิ้งในเดือนกรกฎาคม',
         imageUrl:
           'https://lh3.googleusercontent.com/aida-public/AB6AXuAdNMpQKrifV7ref8iOsTY9XU7DPNMLEFsfx41BhmJyrocd-C1jbpkcb2UpuMfTjIQcXiTdAu10atIy_WkbO0Gze0xTm30pT5tFcZirKVkMj1uGioDNx--7ATTjosLcGVyD6X4FkTSFj5MtjSEAaeM-fLRBTpYFYRTiOmNn2BqfR-VnBqw2le8GWyAb6csQzsyEn0ZHWRTPRIrd8knIAayOdjybon-S5RMMn9aDXFthsLGP7vds1-1vB47Q5TAtflfCnhPp9ZWMvNb-',
         archetype: 'Archetype #001',
         stats: { naughtiness: 5, holidaySpirit: 98 },
       },
       {
-        character: 'The Grinch',
+        character: 'กรินช์',
         description:
-          'You\'re not a monster, you just think holiday music should be illegal until December 1st. You appreciate the sentiment but could do without the chaos. Deep down, you secretly love it.',
+          'คุณไม่ใช่สัตว์ประหลาด คุณแค่คิดว่าเพลงวันหยุดควรผิดกฎหมายจนถึงวันที่ 1 ธันวาคม คุณชื่นชมความรู้สึก แต่สามารถทำได้โดยไม่ต้องยุ่งเหยิง ลึกๆ แล้วคุณรักมันอย่างลับๆ',
         imageUrl:
           'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
         archetype: 'Archetype #066',
@@ -131,7 +131,7 @@ export default function ResultsPage({ params }: ResultsPageProps) {
       character: result.character,
       description: result.description,
       imageUrl: result.imageUrl,
-      shareText: `I got "${result.character}" on VibeQuiz!`,
+      shareText: `ฉันได้ "${result.character}" บน VibeQuiz!`,
       archetype: result.archetype,
       stats: result.stats,
     };
@@ -142,7 +142,7 @@ export default function ResultsPage({ params }: ResultsPageProps) {
       <div className="flex min-h-screen items-center justify-center bg-background-light dark:bg-background-dark">
         <div className="text-center">
           <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent text-primary" />
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Calculating your results...</p>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">กำลังคำนวณผลลัพธ์ของคุณ...</p>
         </div>
       </div>
     );
@@ -152,12 +152,12 @@ export default function ResultsPage({ params }: ResultsPageProps) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background-light dark:bg-background-dark">
         <div className="text-center">
-          <p className="text-red-500">{error || 'Results not available'}</p>
+          <p className="text-red-500">{error || 'ผลลัพธ์ไม่พร้อมใช้งาน'}</p>
           <Link
             href={`/quizzes/${slug}`}
             className="mt-4 inline-block rounded-full bg-primary px-6 py-2 text-white"
           >
-            Back to Quiz
+            กลับไปแบบทดสอบ
           </Link>
         </div>
       </div>

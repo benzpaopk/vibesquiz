@@ -5,10 +5,10 @@
  */
 export default function StatsBar() {
   const stats = [
-    { icon: 'bolt', text: '14,203 Quizzes Taken Today' },
-    { text: '85k+ Vibes Matched' },
-    { text: '4.5k Shares on TikTok' },
-    { text: 'New "Grinch Mode" Quiz Added!' },
+    { icon: 'bolt', text: '14,203 แบบทดสอบที่ทำวันนี้' },
+    { text: '85k+ วิบวับที่จับคู่' },
+    { text: '4.5k แชร์บน TikTok' },
+    { text: 'เพิ่มแบบทดสอบ "โหมดกรินช์" ใหม่!' },
   ];
 
   return (

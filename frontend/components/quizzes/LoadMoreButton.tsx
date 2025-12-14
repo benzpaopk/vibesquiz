@@ -18,7 +18,7 @@ export default function LoadMoreButton() {
         onClick={handleLoadMore}
         className="flex h-12 min-w-[200px] items-center justify-center gap-2 rounded-full border border-[#392828] bg-transparent text-sm font-bold text-white transition-colors hover:bg-[#392828]"
       >
-        Load More Themes
+        โหลดธีมเพิ่มเติม
         <span className="material-symbols-outlined text-[18px]" aria-hidden="true">
           expand_more
         </span>

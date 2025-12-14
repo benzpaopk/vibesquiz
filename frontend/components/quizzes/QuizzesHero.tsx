@@ -13,14 +13,14 @@ export default function QuizzesHero() {
         <div className="flex flex-1 flex-col gap-6">
           <div className="flex flex-col gap-3">
             <span className="w-fit rounded-full bg-primary/20 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
-              Weekly Feature
+              ฟีเจอร์ประจำสัปดาห์
             </span>
             <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl">
-              Find Your Inner <br /> <span className="text-primary">Christmas Elf</span> 🎄
+              ค้นหาเอลฟ์ <br /> <span className="text-primary">คริสต์มาสในตัวคุณ</span> 🎄
             </h1>
             <p className="max-w-lg text-lg text-[#b99d9d]">
-              Are you the chaotic wrapping paper shredder or the organizational mastermind? Unwrap
-              your true personality now.
+              คุณเป็นคนที่ฉีกกระดาษห่อของขวัญแบบยุ่งเหยิงหรือเป็นผู้เชี่ยวชาญด้านการจัดระเบียบ?
+              เปิดเผยบุคลิกภาพที่แท้จริงของคุณตอนนี้เลย
             </p>
           </div>
           <div className="flex gap-4">
@@ -28,13 +28,13 @@ export default function QuizzesHero() {
               href="/quizzes/who-are-you-on-christmas-day/question/1"
               className="flex h-12 items-center justify-center rounded-full bg-primary px-8 text-base font-bold text-white shadow-lg shadow-primary/30 transition-all hover:bg-red-600 hover:shadow-xl"
             >
-              Start Quiz
+              เริ่มทำแบบทดสอบ
             </Link>
             <Link
               href="#quizzes"
               className="flex h-12 items-center justify-center rounded-full bg-[#392828] px-8 text-base font-bold text-white transition-all hover:bg-[#4a3535]"
             >
-              View All
+              ดูทั้งหมด
             </Link>
           </div>
         </div>

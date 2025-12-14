@@ -6,23 +6,23 @@
 export default function QuizStats() {
   const stats = [
     {
-      label: 'Players Today',
+      label: 'ผู้เล่นวันนี้',
       value: '10k+',
       change: '+15%',
       icon: 'trending_up',
       color: 'green',
     },
     {
-      label: 'Shared',
+      label: 'แชร์',
       value: '5,400',
       change: '+22%',
       icon: 'share',
       color: 'blue',
     },
     {
-      label: 'Secret Characters',
+      label: 'ตัวละครลับ',
       value: '12',
-      valueSuffix: 'Types',
+      valueSuffix: 'ประเภท',
       icon: 'lock_open',
       color: 'purple',
     },
