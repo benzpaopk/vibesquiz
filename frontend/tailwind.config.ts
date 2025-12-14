@@ -13,7 +13,8 @@ const config: Config = {
         primary: '#ec1313',
         'background-light': '#f8f6f6',
         'background-dark': '#221010',
-        'surface-dark': '#2d1b1b',
+        'surface-dark': '#2c1616',
+        'surface-darker': '#1a0b0b',
         'surface-light': '#ffffff',
       },
       fontFamily: {

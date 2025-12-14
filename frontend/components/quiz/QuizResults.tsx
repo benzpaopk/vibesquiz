@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-// Social sharing handled inline
+import { useRouter } from 'next/navigation';
 
 interface QuizResultsProps {
   results: {
@@ -11,115 +11,304 @@ interface QuizResultsProps {
     description: string;
     imageUrl: string;
     shareText: string;
+    archetype?: string;
+    stats?: {
+      naughtiness: number;
+      holidaySpirit: number;
+    };
   };
   sessionId: string;
   quizSlug: string;
 }
 
 /**
- * Quiz results component.
+ * Quiz results component with full-screen immersive design.
  * 
- * Displays quiz results with character reveal and sharing options.
+ * Displays quiz results with character reveal, stats, and sharing options.
  */
 export default function QuizResults({ results, sessionId, quizSlug }: QuizResultsProps) {
+  const router = useRouter();
   const [isSharing, setIsSharing] = useState(false);
 
-  const handleShare = async () => {
-    if (navigator.share) {
+  const handleShare = async (platform?: 'facebook' | 'twitter' | 'instagram' | 'link') => {
+    const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
+    const shareText = results.shareText || `I got ${results.character} on VibeQuiz!`;
+
+    if (platform === 'link') {
+      // Copy to clipboard
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        setIsSharing(true);
+        setTimeout(() => setIsSharing(false), 2000);
+      } catch (error) {
+        console.error('Failed to copy link:', error);
+      }
+      return;
+    }
+
+    if (navigator.share && !platform) {
+      // Use native share API
       try {
         await navigator.share({
           title: `I got ${results.character} on VibeQuiz!`,
-          text: results.shareText,
-          url: window.location.href,
+          text: shareText,
+          url: shareUrl,
         });
       } catch (error) {
         // User cancelled or error occurred
         console.log('Share cancelled');
       }
-    } else {
-      // Fallback: copy to clipboard
-      navigator.clipboard.writeText(window.location.href);
-      setIsSharing(true);
-      setTimeout(() => setIsSharing(false), 2000);
+      return;
+    }
+
+    // Fallback to platform-specific URLs
+    const urls: Record<string, string> = {
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+      twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`,
+      instagram: `https://www.instagram.com/`,
+    };
+
+    if (platform && urls[platform]) {
+      if (platform === 'instagram') {
+        alert('Share on Instagram by copying the link and posting it in your story!');
+        return;
+      }
+      window.open(urls[platform], '_blank', 'width=600,height=400');
     }
   };
 
+  const handleRetake = () => {
+    router.push(`/quiz/${quizSlug}/start`);
+  };
+
+  const stats = results.stats || {
+    naughtiness: Math.floor(Math.random() * 40) + 60, // 60-100%
+    holidaySpirit: Math.floor(Math.random() * 30) + 10, // 10-40%
+  };
+
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      {/* Results Header */}
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
-          <span className="material-symbols-outlined text-primary" aria-hidden="true">
-            emoji_events
-          </span>
-          <span className="text-sm font-bold text-primary">Quiz Complete!</span>
-        </div>
-        <h1 className="text-4xl md:text-5xl font-black text-[#181111] dark:text-white mb-4">
-          You Are...
-        </h1>
-      </div>
+    <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden bg-background-light dark:bg-background-dark">
+      {/* Top Navigation */}
+      <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/80 backdrop-blur-md">
+        <div className="px-6 md:px-10 py-4 flex items-center justify-between max-w-[1200px] mx-auto w-full">
+          <Link
+            href="/"
+            className="flex items-center gap-3 text-white cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            <div className="size-8 text-primary">
+              <span className="material-symbols-outlined text-3xl" aria-hidden="true">
+                ac_unit
+              </span>
+            </div>
+            <h2 className="text-white text-xl font-bold tracking-tight">VibeQuiz</h2>
+          </Link>
 
-      {/* Character Reveal Card */}
-      <div className="bg-white dark:bg-[#2a1a1a] rounded-3xl overflow-hidden shadow-2xl border border-gray-200 dark:border-[#543b3b] mb-8">
-        {/* Character Image */}
-        <div className="relative w-full h-64 md:h-96 bg-gradient-to-br from-primary/20 to-transparent">
-          <Image
-            src={results.imageUrl}
-            alt={`${results.character} character`}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 800px"
-            priority
-          />
+          <div className="flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-8">
+              <Link
+                href="/"
+                className="text-white/70 hover:text-primary transition-colors text-sm font-semibold"
+              >
+                Home
+              </Link>
+              <Link
+                href="/quizzes"
+                className="text-white/70 hover:text-primary transition-colors text-sm font-semibold"
+              >
+                All Quizzes
+              </Link>
+            </div>
+            <button
+              onClick={handleRetake}
+              className="hidden sm:flex h-10 px-5 items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-white text-sm font-bold border border-white/10 transition-all"
+            >
+              Retake Quiz
+            </button>
+            <button className="sm:hidden text-white" aria-label="Menu">
+              <span className="material-symbols-outlined" aria-hidden="true">
+                menu
+              </span>
+            </button>
+          </div>
         </div>
+      </header>
 
-        {/* Character Info */}
-        <div className="p-8 md:p-12">
-          <div className="text-center mb-6">
-            <h2 className="text-5xl md:text-6xl font-black text-primary mb-4">
-              {results.character}
-            </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
-              {results.description}
+      {/* Main Layout Container */}
+      <main className="flex-1 w-full px-4 md:px-10 py-8 md:py-12 flex justify-center">
+        <div className="max-w-[1000px] w-full flex flex-col gap-8">
+          {/* Page Heading */}
+          <div className="flex flex-col gap-2 text-center md:text-left animate-fade-in-up">
+            <p className="text-primary font-bold uppercase tracking-widest text-sm">
+              Result Calculated
+            </p>
+            <h1 className="text-white text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
+              Your Christmas Persona Is...
+            </h1>
+            <p className="text-white/60 text-lg font-medium max-w-2xl">
+              Based on your questionable life choices, the AI has generated your holiday alter-ego.
             </p>
           </div>
 
-          {/* Share Button */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={handleShare}
-              className="flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-white font-bold hover:bg-red-700 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-105"
-            >
-              <span className="material-symbols-outlined" aria-hidden="true">
-                share
-              </span>
-              {isSharing ? 'Link Copied!' : 'Share Results'}
-            </button>
-            <Link
-              href={`/quizzes/${quizSlug}`}
-              className="flex items-center gap-2 px-8 py-4 rounded-full bg-gray-100 dark:bg-[#392828] text-gray-700 dark:text-gray-300 font-bold hover:bg-gray-200 dark:hover:bg-[#4a3535] transition-all"
-            >
-              Take Again
-            </Link>
+          {/* Main Result Card */}
+          <div className="group relative rounded-2xl bg-surface-dark border border-white/5 p-6 md:p-8 shadow-[0_0_50px_-12px_rgba(236,19,19,0.15)] hover:shadow-[0_0_60px_-12px_rgba(236,19,19,0.3)] transition-all duration-500">
+            {/* Decorative Background Elements */}
+            <div className="absolute -top-10 -right-10 w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+            <div className="relative flex flex-col-reverse lg:flex-row gap-8 lg:gap-12 items-stretch">
+              {/* Text Content (Left) */}
+              <div className="flex flex-col gap-6 flex-[3] justify-center">
+                {/* Archetype Tag & Title */}
+                <div className="flex flex-col gap-2">
+                  <div className="inline-flex items-center gap-2 self-start rounded-full bg-white/5 px-3 py-1 border border-white/10">
+                    <span
+                      className="material-symbols-outlined text-sm text-primary"
+                      aria-hidden="true"
+                    >
+                      fingerprint
+                    </span>
+                    <span className="text-white/60 text-xs font-bold tracking-widest uppercase">
+                      {results.archetype || 'Archetype #042'}
+                    </span>
+                  </div>
+                  <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-black leading-[0.95] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">
+                    {results.character}
+                  </h2>
+                </div>
+
+                {/* Description */}
+                <div className="bg-surface-darker/50 rounded-xl p-5 border border-white/5">
+                  <p className="text-gray-300 text-lg leading-relaxed">{results.description}</p>
+                </div>
+
+                {/* Stats Section */}
+                <div className="grid grid-cols-2 gap-4 mt-2">
+                  {/* Naughtiness Stat */}
+                  <div className="flex flex-col gap-3 rounded-xl p-4 bg-white/5 border border-white/5">
+                    <div className="flex justify-between items-center">
+                      <p className="text-white/80 text-sm font-bold uppercase tracking-wide">
+                        Naughtiness
+                      </p>
+                      <span
+                        className="material-symbols-outlined text-primary"
+                        aria-hidden="true"
+                      >
+                        local_fire_department
+                      </span>
+                    </div>
+                    <div className="flex items-end gap-2">
+                      <p className="text-white text-3xl font-black">{stats.naughtiness}%</p>
+                      <div className="h-2 flex-1 bg-white/10 rounded-full mb-2 overflow-hidden">
+                        <div
+                          className="h-full bg-primary rounded-full shadow-[0_0_10px_rgba(236,19,19,0.5)] transition-all duration-500"
+                          style={{ width: `${stats.naughtiness}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Holiday Spirit Stat */}
+                  <div className="flex flex-col gap-3 rounded-xl p-4 bg-white/5 border border-white/5">
+                    <div className="flex justify-between items-center">
+                      <p className="text-white/80 text-sm font-bold uppercase tracking-wide">
+                        Holiday Spirit
+                      </p>
+                      <span
+                        className="material-symbols-outlined text-green-400"
+                        aria-hidden="true"
+                      >
+                        sentiment_satisfied
+                      </span>
+                    </div>
+                    <div className="flex items-end gap-2">
+                      <p className="text-white text-3xl font-black">{stats.holidaySpirit}%</p>
+                      <div className="h-2 flex-1 bg-white/10 rounded-full mb-2 overflow-hidden">
+                        <div
+                          className="h-full bg-green-400 rounded-full shadow-[0_0_10px_rgba(74,222,128,0.5)] transition-all duration-500"
+                          style={{ width: `${stats.holidaySpirit}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Image Content (Right) */}
+              <div className="flex-[2] relative group/image">
+                <div className="absolute inset-0 bg-primary rounded-2xl rotate-3 opacity-20 blur-lg group-hover/image:opacity-30 transition-opacity duration-500" />
+                <div className="relative h-full min-h-[400px] w-full rounded-2xl border-2 border-white/10 shadow-2xl overflow-hidden">
+                  <Image
+                    src={results.imageUrl}
+                    alt={`${results.character} character illustration`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 500px"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface-darker/80 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 text-center">
+                    <span className="inline-block px-3 py-1 bg-black/50 backdrop-blur-sm rounded-full text-[10px] font-mono text-white/50 border border-white/10">
+                      AI GENERATED IMAGE
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer / Share Actions */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-6 border-t border-white/10">
+            <div className="flex flex-col gap-1">
+              <h3 className="text-white text-xl font-bold">Expose yourself to friends:</h3>
+              <p className="text-white/50 text-sm">Don't worry, they probably already know.</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => handleShare('facebook')}
+                className="size-12 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg"
+                aria-label="Share on Facebook"
+              >
+                <span className="material-symbols-outlined text-2xl" aria-hidden="true">
+                  public
+                </span>
+              </button>
+              <button
+                onClick={() => handleShare('twitter')}
+                className="size-12 rounded-full bg-black border border-white/20 text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg"
+                aria-label="Share on Twitter"
+              >
+                <svg aria-hidden="true" className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </button>
+              <button
+                onClick={() => handleShare('instagram')}
+                className="size-12 rounded-full bg-gradient-to-tr from-[#FFD600] via-[#FF0100] to-[#D800B9] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg"
+                aria-label="Share on Instagram"
+              >
+                <span className="material-symbols-outlined text-2xl" aria-hidden="true">
+                  photo_camera
+                </span>
+              </button>
+              <div className="w-px h-8 bg-white/10 mx-2" aria-hidden="true" />
+              <button
+                onClick={() => handleShare('link')}
+                className="h-12 px-6 rounded-full bg-primary hover:bg-red-600 text-white font-bold flex items-center gap-2 transition-colors shadow-[0_0_20px_rgba(236,19,19,0.4)] hover:shadow-[0_0_30px_rgba(236,19,19,0.6)]"
+              >
+                <span className="material-symbols-outlined" aria-hidden="true">
+                  share
+                </span>
+                <span>{isSharing ? 'Link Copied!' : 'Share Link'}</span>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
 
-      {/* Action Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Link
-          href="/quizzes"
-          className="text-center px-6 py-3 rounded-full bg-white dark:bg-[#2a1a1a] border border-gray-200 dark:border-[#543b3b] text-gray-700 dark:text-gray-300 font-medium hover:border-primary/50 transition-all"
-        >
-          Explore More Quizzes
-        </Link>
-        <Link
-          href="/leaderboard"
-          className="text-center px-6 py-3 rounded-full bg-white dark:bg-[#2a1a1a] border border-gray-200 dark:border-[#543b3b] text-gray-700 dark:text-gray-300 font-medium hover:border-primary/50 transition-all"
-        >
-          View Leaderboard
-        </Link>
-      </div>
+      {/* Simple Footer */}
+      <footer className="w-full py-8 text-center text-white/30 text-xs">
+        <p>© {new Date().getFullYear()} VibeQuiz. Powered by Holiday Spirit & AI.</p>
+      </footer>
     </div>
   );
 }

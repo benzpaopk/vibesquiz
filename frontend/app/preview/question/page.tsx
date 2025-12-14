@@ -3,6 +3,7 @@
 import QuizQuestion from '@/components/quiz/QuizQuestion';
 import QuizProgress from '@/components/quiz/QuizProgress';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 /**
  * Preview page for quiz question component.
@@ -13,6 +14,7 @@ import { useState } from 'react';
  * the full quiz flow. Useful for development and testing.
  */
 export default function QuestionPreviewPage() {
+  const router = useRouter();
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [questionNumber, setQuestionNumber] = useState(3);
 
@@ -40,7 +42,8 @@ export default function QuestionPreviewPage() {
       setQuestionNumber(questionNumber + 1);
       setSelectedAnswer(null);
     } else {
-      alert('Quiz complete! (This is a preview)');
+      // Navigate to results page
+      router.push('/preview/question/result');
     }
   };
 

@@ -88,13 +88,20 @@ export default function QuestionPage({ params }: QuestionPageProps) {
     }
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (!selectedAnswer) return;
+
+    // Ensure answer is saved before navigation
+    if (sessionId) {
+      saveAnswer(sessionId, questionNumber - 1, selectedAnswer);
+    }
 
     const totalQuestions = 10; // From quiz config
     if (questionNumber < totalQuestions) {
       router.push(`/quiz/${slug}/question/${questionNumber + 1}?session=${sessionId}`);
     } else {
+      // Small delay to ensure answer is saved
+      await new Promise((resolve) => setTimeout(resolve, 100));
       // Navigate to results
       router.push(`/quiz/${slug}/results?session=${sessionId}`);
     }
