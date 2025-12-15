@@ -22,92 +22,145 @@ export type MBTIScores = {
 };
 
 /**
- * Question to MBTI Trait Pair Mapping
- * - Q1, Q5, Q9 -> E vs I (Extraversion vs Introversion)
- * - Q2, Q6 -> S vs N (Sensing vs Intuition)
- * - Q3, Q7, Q10 -> T vs F (Thinking vs Feeling)
- * - Q4, Q8 -> J vs P (Judging vs Perceiving)
- */
-const QUESTION_TO_TRAIT_MAP: Record<number, 'EI' | 'SN' | 'TF' | 'JP'> = {
-  1: 'EI',
-  2: 'SN',
-  3: 'TF',
-  4: 'JP',
-  5: 'EI',
-  6: 'SN',
-  7: 'TF',
-  8: 'JP',
-  9: 'EI',
-  10: 'TF',
-};
-
-/**
- * Answer choice to trait mapping
- * Mapping based on typical MBTI logic:
- * - A, B typically lean: E (Extraversion), S (Sensing), T (Thinking), J (Judging)
- * - C, D, E typically lean: I (Introversion), N (Intuition), F (Feeling), P (Perceiving)
- */
-const ANSWER_TO_TRAIT_MAP: Record<string, { EI?: 'E' | 'I'; SN?: 'S' | 'N'; TF?: 'T' | 'F'; JP?: 'J' | 'P' }> = {
-  'A': { EI: 'E', SN: 'S', TF: 'T', JP: 'J' }, // First trait for all pairs
-  'B': { EI: 'E', SN: 'S', TF: 'F', JP: 'J' }, // E, S, F, J (F for feeling-oriented)
-  'C': { EI: 'I', SN: 'N', TF: 'T', JP: 'P' }, // I, N, T, P (mixed)
-  'D': { EI: 'I', SN: 'N', TF: 'F', JP: 'P' }, // Second trait for all pairs
-  'E': { EI: 'I', SN: 'N', TF: 'F', JP: 'P' }, // Second trait for all pairs
-};
-
-/**
- * Calculate MBTI type from user's answers
+ * Calculate MBTI type from user's answers using weighted scoring system
  * 
  * @param answers - Object mapping question IDs to answer choices (e.g., { 1: 'A', 2: 'B' })
  * @returns 4-letter MBTI code (e.g., "ENFP", "ISTJ")
  */
 export function calculateMBTI(answers: Record<number, string>): MBTIType {
-  // Initialize scores
-  const scores: MBTIScores = {
-    E: 0,
-    I: 0,
-    S: 0,
-    N: 0,
-    T: 0,
-    F: 0,
-    J: 0,
-    P: 0,
-  };
+  // Initialize 4 counters (Positive = first trait, Negative = second trait)
+  let score_EI = 0; // Positive = E, Negative = I
+  let score_SN = 0; // Positive = S, Negative = N
+  let score_TF = 0; // Positive = T, Negative = F
+  let score_JP = 0; // Positive = J, Negative = P
 
-  // Loop through answers and accumulate scores
-  Object.entries(answers).forEach(([questionIdStr, answerId]) => {
+  // Process each answer
+  for (const [questionIdStr, answer] of Object.entries(answers)) {
     const questionId = parseInt(questionIdStr, 10);
-    const traitPair = QUESTION_TO_TRAIT_MAP[questionId];
-    const answerMapping = ANSWER_TO_TRAIT_MAP[answerId];
+    const answerUpper = answer.toUpperCase();
 
-    if (!traitPair || !answerMapping) return;
-
-    // Add score based on trait pair
-    switch (traitPair) {
-      case 'EI':
-        if (answerMapping.EI === 'E') scores.E++;
-        if (answerMapping.EI === 'I') scores.I++;
-        break;
-      case 'SN':
-        if (answerMapping.SN === 'S') scores.S++;
-        if (answerMapping.SN === 'N') scores.N++;
-        break;
-      case 'TF':
-        if (answerMapping.TF === 'T') scores.T++;
-        if (answerMapping.TF === 'F') scores.F++;
-        break;
-      case 'JP':
-        if (answerMapping.JP === 'J') scores.J++;
-        if (answerMapping.JP === 'P') scores.P++;
-        break;
+    // 1. Energy Axis (E vs I) - Q1, Q5, Q9
+    if (questionId === 1 || questionId === 5) {
+      // Q1 & Q5: A, B = +2 (E), C = 0, D, E = -2 (I)
+      if (answerUpper === 'A' || answerUpper === 'B') {
+        score_EI += 2;
+      } else if (answerUpper === 'D' || answerUpper === 'E') {
+        score_EI -= 2;
+      }
+      // C = 0 (no change)
+    } else if (questionId === 9) {
+      // Q9 (Influence): A (Santa), C (Reindeer) = +1 (E)
+      // D (Snowman), E (Grinch) = -1 (I)
+      // B (Elf) = 0
+      if (answerUpper === 'A' || answerUpper === 'C') {
+        score_EI += 1;
+      } else if (answerUpper === 'D' || answerUpper === 'E') {
+        score_EI -= 1;
+      }
+      // B = 0 (no change)
     }
-  });
 
-  // Determine winner for each trait pair (>= favors first letter)
-  const firstLetter = scores.E >= scores.I ? 'E' : 'I';
-  const secondLetter = scores.S >= scores.N ? 'S' : 'N';
-  const thirdLetter = scores.T >= scores.F ? 'T' : 'F';
-  const fourthLetter = scores.J >= scores.P ? 'J' : 'P';
+    // 2. Information Axis (S vs N) - Q2, Q6, Q10
+    if (questionId === 2) {
+      // Q2: A, B = +2 (S), C = 0, D, E = -2 (N)
+      if (answerUpper === 'A' || answerUpper === 'B') {
+        score_SN += 2;
+      } else if (answerUpper === 'D' || answerUpper === 'E') {
+        score_SN -= 2;
+      }
+      // C = 0 (no change)
+    } else if (questionId === 6) {
+      // Q6: A (Cash), B (Voucher), C (Resell) = +2 (S - Concrete value)
+      // D (Rare), E (Handmade/Letter) = -2 (N - Abstract/Sentimental)
+      if (answerUpper === 'A' || answerUpper === 'B' || answerUpper === 'C') {
+        score_SN += 2;
+      } else if (answerUpper === 'D' || answerUpper === 'E') {
+        score_SN -= 2;
+      }
+    } else if (questionId === 10) {
+      // Q10 (Influence): A (Rich), B (Health) = +1 (S)
+      // C (World), D (Self), E (Survival) = -1 (N)
+      if (answerUpper === 'A' || answerUpper === 'B') {
+        score_SN += 1;
+      } else if (answerUpper === 'C' || answerUpper === 'D' || answerUpper === 'E') {
+        score_SN -= 1;
+      }
+    }
+
+    // 3. Decision Axis (T vs F) - Q3, Q7, Q9, Q10
+    if (questionId === 3) {
+      // Q3: A (Stop crying), B (Analyze) = +2 (T)
+      // C = 0
+      // D (Cry with), E (Cheer up) = -2 (F)
+      if (answerUpper === 'A' || answerUpper === 'B') {
+        score_TF += 2;
+      } else if (answerUpper === 'D' || answerUpper === 'E') {
+        score_TF -= 2;
+      }
+      // C = 0 (no change)
+    } else if (questionId === 7) {
+      // Q7: A (Complain), B (Calc cost) = +2 (T)
+      // C (Suppress), D (Care), E (Joke) = -2 (F)
+      if (answerUpper === 'A' || answerUpper === 'B') {
+        score_TF += 2;
+      } else if (answerUpper === 'C' || answerUpper === 'D' || answerUpper === 'E') {
+        score_TF -= 2;
+      }
+    } else if (questionId === 9) {
+      // Q9 (Influence): E (Grinch) = +1 (T)
+      // D (Snowman) = -1 (F)
+      // Other answers don't affect TF
+      if (answerUpper === 'E') {
+        score_TF += 1;
+      } else if (answerUpper === 'D') {
+        score_TF -= 1;
+      }
+    } else if (questionId === 10) {
+      // Q10 (Influence): A (Success) = +1 (T)
+      // C (Kindness) = -1 (F)
+      // Other answers don't affect TF
+      if (answerUpper === 'A') {
+        score_TF += 1;
+      } else if (answerUpper === 'C') {
+        score_TF -= 1;
+      }
+    }
+
+    // 4. Lifestyle Axis (J vs P) - Q4, Q8, Q9
+    if (questionId === 4) {
+      // Q4: A (Early), B (Standard), C (Outsource) = +2 (J)
+      // D (Last minute), E (In car) = -2 (P)
+      if (answerUpper === 'A' || answerUpper === 'B' || answerUpper === 'C') {
+        score_JP += 2;
+      } else if (answerUpper === 'D' || answerUpper === 'E') {
+        score_JP -= 2;
+      }
+    } else if (questionId === 8) {
+      // Q8: A (Sleep early), B (Preparing) = +2 (J)
+      // C, D, E (Flow/Late) = -2 (P)
+      if (answerUpper === 'A' || answerUpper === 'B') {
+        score_JP += 2;
+      } else if (answerUpper === 'C' || answerUpper === 'D' || answerUpper === 'E') {
+        score_JP -= 2;
+      }
+    } else if (questionId === 9) {
+      // Q9 (Influence): A (Santa), B (Elf) = +1 (J - Organized/Leader)
+      // C (Reindeer), E (Grinch) = -1 (P - Adaptable/Indy)
+      // D doesn't affect JP
+      if (answerUpper === 'A' || answerUpper === 'B') {
+        score_JP += 1;
+      } else if (answerUpper === 'C' || answerUpper === 'E') {
+        score_JP -= 1;
+      }
+    }
+  }
+
+  // Determine letters with tie-breaker rules
+  // If score is exactly 0, use default tie-breaker
+  const firstLetter = score_EI > 0 ? 'E' : score_EI < 0 ? 'I' : 'E'; // Default to E (Christmas is social)
+  const secondLetter = score_SN > 0 ? 'S' : score_SN < 0 ? 'N' : 'S'; // Default to S (Questions relate to physical gifts/events)
+  const thirdLetter = score_TF > 0 ? 'T' : score_TF < 0 ? 'F' : 'F'; // Default to F (Holiday spirit is about feeling)
+  const fourthLetter = score_JP > 0 ? 'J' : score_JP < 0 ? 'P' : 'P'; // Default to P (Parties are chaotic)
 
   // Combine into MBTI type
   const mbtiType = `${firstLetter}${secondLetter}${thirdLetter}${fourthLetter}` as MBTIType;

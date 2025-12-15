@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import QuizQuestion from '@/components/quiz/QuizQuestion';
 import ZustandQuizProgress from '@/components/quiz/ZustandQuizProgress';
-import { christmasQuestions } from '@/lib/data/christmas-quiz';
+import { questions } from '@/lib/data/questions';
 import { useQuizStore } from '@/store/useQuizStore';
 
 interface QuestionPageProps {
@@ -43,9 +43,30 @@ export default function QuestionPage({ params }: QuestionPageProps) {
   if (!isMounted) return null;
   if (!isValidId) return null;
 
+  // Debug: Log questions to verify import
+  console.log('Questions loaded:', questions);
+
   const questionIndex = questionId - 1;
-  const currentQuestionData = christmasQuestions[questionIndex];
+  const rawQuestion = questions[questionIndex];
+  
+  // Transform the question data structure to match QuizQuestion component expectations
+  // Convert choices (with label/value) to options (with id/text)
+  const currentQuestionData = rawQuestion ? {
+    id: rawQuestion.id,
+    text: rawQuestion.text,
+    options: rawQuestion.choices.map(choice => ({
+      id: choice.value, // 'A', 'B', 'C', 'D', 'E'
+      text: choice.label, // Thai text
+    })),
+  } : null;
+
   const selectedAnswer = answers[questionId] || null;
+
+  // Safety check: if question not found, redirect
+  if (!currentQuestionData) {
+    router.replace('/quizzes/who-are-you-on-christmas-day/question/1');
+    return null;
+  }
 
   const handleAnswerSelect = (answerId: string) => {
     setAnswer(questionId, answerId);

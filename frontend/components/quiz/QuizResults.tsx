@@ -145,9 +145,6 @@ export default function QuizResults({ results, sessionId, quizSlug, onRetake }: 
             <h1 className="text-white text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
               บุคลิกภาพคริสต์มาสของคุณคือ...
             </h1>
-            <p className="text-white/60 text-lg font-medium max-w-2xl">
-              จากทางเลือกในชีวิตที่น่าสงสัยของคุณ AI ได้สร้างบุคลิกภาพวันหยุดของคุณแล้ว
-            </p>
           </div>
 
           {/* Main Result Card */}

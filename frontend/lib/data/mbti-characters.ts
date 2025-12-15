@@ -5,243 +5,243 @@ import type { MBTIType } from '../utils/calculateResult';
  * Christmas Characters mapped to 16 MBTI personality types
  */
 export const MBTI_CHRISTMAS_CHARACTERS: Record<MBTIType, CharacterResult> = {
-  // ENFP - The Enthusiastic Reindeer
-  ENFP: {
-    character: 'The Enthusiastic Reindeer',
+  // INTJ - นักวางแผน (The Planner)
+  INTJ: {
+    character: 'นักวางแผน (INTJ)',
     description:
-      'You bring infectious energy to every holiday gathering! Full of wild ideas and spontaneous joy, you\'re the one who suggests building a snowman at midnight or starting a flash mob in the mall. Your excitement is contagious, and you make Christmas magical for everyone around you.',
+      'งานปาร์ตี้ต้องมี Timeline! คุณคือผู้อยู่เบื้องหลังความเป๊ะของตารางงาน วางแผนจับฉลากยันเวลาเลิกงาน ทุกอย่างต้องเป็นไปตามแผนที่วางไว้ ไม่มีอะไรหลุดออกจากระบบของคุณได้เลย',
     imageUrl:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
-    shareText: 'I got "The Enthusiastic Reindeer" (ENFP) on VibeQuiz!',
+    shareText: 'ฉันได้ "นักวางแผน (INTJ)" ใน VibeQuiz!',
     archetype: 'Archetype #001',
     stats: {
-      naughtiness: 75,
-      holidaySpirit: 95,
-    },
-  },
-
-  // ENFJ - The Generous Santa
-  ENFJ: {
-    character: 'The Generous Santa',
-    description:
-      'You\'re the heart of Christmas! Always thinking of others, you spend months planning perfect gifts and ensuring everyone feels included. You host amazing parties, remember everyone\'s dietary restrictions, and somehow make time for everyone. You\'re the one who makes Christmas feel like home.',
-    imageUrl:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
-    shareText: 'I got "The Generous Santa" (ENFJ) on VibeQuiz!',
-    archetype: 'Archetype #002',
-    stats: {
-      naughtiness: 10,
-      holidaySpirit: 100,
-    },
-  },
-
-  // ENTP - The Chaotic Elf
-  ENTP: {
-    character: 'The Chaotic Elf',
-    description:
-      'You claimed you\'d buy gifts in November, but here you are panic-shopping on the 24th. Your toxic trait is eating all the cookies before Santa arrives and blaming the dog. You are the life of the party, but the death of any organized plan. Embrace the chaos!',
-    imageUrl:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCm0w85ZaKTbiIspPRaoDjvhiPny_fRci40pnLiLbetsZ0wfZYWZvvl5Q9Buv6ItSFP9Vh340KWbwtULtd5Ybhx5hUao6VIO-AmpUNgrhNkuI4SE1WZ1wLbnlJjkvf9bSc_nm6K963HBJdZGYLVw9ZaOb7G2xKIC7FYPFJKf4nE3fBXh5jaAt9hdCLDoftb82e2gH1-d_g8jGb_xzwLdZt_XOJUCfEwIxoY-iCYrBNLOPGaF7v99XqjPBjrssjzMjoczWiSuwiCA_ro',
-    shareText: 'I got "The Chaotic Elf" (ENTP) on VibeQuiz!',
-    archetype: 'Archetype #003',
-    stats: {
-      naughtiness: 95,
-      holidaySpirit: 80,
-    },
-  },
-
-  // ENTJ - The Master Planner
-  ENTJ: {
-    character: 'The Master Planner',
-    description:
-      'Christmas doesn\'t happen without your spreadsheets. You\'ve planned every gift, every meal, every decoration placement since July. You coordinate family schedules, delegate tasks, and somehow make it all look effortless. You\'re the CEO of Christmas.',
-    imageUrl:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
-    shareText: 'I got "The Master Planner" (ENTJ) on VibeQuiz!',
-    archetype: 'Archetype #004',
-    stats: {
-      naughtiness: 20,
+      naughtiness: 25,
       holidaySpirit: 85,
     },
   },
 
-  // INFP - The Dreamy Reindeer
-  INFP: {
-    character: 'The Dreamy Reindeer',
+  // INTP - วิศวกรไฟ (The Light Engineer)
+  INTP: {
+    character: 'วิศวกรไฟ (INTP)',
     description:
-      'You see the magic in everything. Christmas isn\'t just a holiday—it\'s a feeling, a moment frozen in time. You write heartfelt cards, create meaningful traditions, and remember what Christmas truly means. You\'re the keeper of holiday memories.',
+      'คุณหมกมุ่นกับการจัดแสงไฟคริสต์มาสให้สมบูรณ์แบบ วิเคราะห์ว่าต้องใช้หลอดไฟกี่ดวง วางตำแหน่งยังไงให้สวยงามและประหยัดไฟที่สุด คุณคือคนที่อ่านคู่มือการติดตั้งไฟคริสต์มาสจนจบ',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCm0w85ZaKTbiIspPRaoDjvhiPny_fRci40pnLiLbetsZ0wfZYWZvvl5Q9Buv6ItSFP9Vh340KWbwtULtd5Ybhx5hUao6VIO-AmpUNgrhNkuI4SE1WZ1wLbnlJjkvf9bSc_nm6K963HBJdZGYLVw9ZaOb7G2xKIC7FYPFJKf4nE3fBXh5jaAt9hdCLDoftb82e2gH1-d_g8jGb_xzwLdZt_XOJUCfEwIxoY-iCYrBNLOPGaF7v99XqjPBjrssjzMjoczWiSuwiCA_ro',
+    shareText: 'ฉันได้ "วิศวกรไฟ (INTP)" ใน VibeQuiz!',
+    archetype: 'Archetype #002',
+    stats: {
+      naughtiness: 30,
+      holidaySpirit: 70,
+    },
+  },
+
+  // ENTJ - บอสปาร์ตี้ (The Party Boss)
+  ENTJ: {
+    character: 'บอสปาร์ตี้ (ENTJ)',
+    description:
+      'คุณคือ CEO ของงานปาร์ตี้คริสต์มาส! จัดการทุกอย่างให้เป็นระบบ มอบหมายงานให้ทุกคนอย่างมีประสิทธิภาพ งานปาร์ตี้จะไม่เกิดขึ้นถ้าไม่มีคุณเป็นผู้กำกับ คุณทำให้ทุกอย่างดูง่าย แต่จริงๆ แล้วมันซับซ้อนมาก',
     imageUrl:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
-    shareText: 'I got "The Dreamy Reindeer" (INFP) on VibeQuiz!',
+    shareText: 'ฉันได้ "บอสปาร์ตี้ (ENTJ)" ใน VibeQuiz!',
+    archetype: 'Archetype #003',
+    stats: {
+      naughtiness: 20,
+      holidaySpirit: 90,
+    },
+  },
+
+  // ENTP - ตัวปั่น (The Prankster)
+  ENTP: {
+    character: 'ตัวปั่น (ENTP)',
+    description:
+      'คุณสร้างความวุ่นวายเพื่อความสนุก! วางแผนแกล้งเพื่อนในงานปาร์ตี้ สร้างสถานการณ์ที่ไม่มีใครคาดคิด คุณคือชีวิตของงานปาร์ตี้ แต่ก็เป็นความตายของแผนการที่วางไว้ รับความวุ่นวายกันเถอะ!',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCm0w85ZaKTbiIspPRaoDjvhiPny_fRci40pnLiLbetsZ0wfZYWZvvl5Q9Buv6ItSFP9Vh340KWbwtULtd5Ybhx5hUao6VIO-AmpUNgrhNkuI4SE1WZ1wLbnlJjkvf9bSc_nm6K963HBJdZGYLVw9ZaOb7G2xKIC7FYPFJKf4nE3fBXh5jaAt9hdCLDoftb82e2gH1-d_g8jGb_xzwLdZt_XOJUCfEwIxoY-iCYrBNLOPGaF7v99XqjPBjrssjzMjoczWiSuwiCA_ro',
+    shareText: 'ฉันได้ "ตัวปั่น (ENTP)" ใน VibeQuiz!',
+    archetype: 'Archetype #004',
+    stats: {
+      naughtiness: 95,
+      holidaySpirit: 85,
+    },
+  },
+
+  // INFJ - ผู้กุมความลับ (The Secret Keeper)
+  INFJ: {
+    character: 'ผู้กุมความลับ (INFJ)',
+    description:
+      'คุณรู้ว่าใครได้ของอะไรใน Secret Santa! คุณเป็นคนที่เก็บความลับได้ดีที่สุด และเข้าใจจิตใจของทุกคนอย่างลึกซึ้ง ของขวัญที่คุณให้มักจะมีความหมายพิเศษ เพราะคุณฟังและจำรายละเอียดเล็กๆ น้อยๆ',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
+    shareText: 'ฉันได้ "ผู้กุมความลับ (INFJ)" ใน VibeQuiz!',
     archetype: 'Archetype #005',
+    stats: {
+      naughtiness: 15,
+      holidaySpirit: 95,
+    },
+  },
+
+  // INFP - นักฝัน (The Dreamer)
+  INFP: {
+    character: 'นักฝัน (INFP)',
+    description:
+      'คุณหลงใหลในเวทมนตร์ของวันหยุด! คริสต์มาสไม่ใช่แค่วันหยุด แต่เป็นความรู้สึก เป็นช่วงเวลาที่หยุดนิ่ง คุณเขียนการ์ดด้วยใจ จัดทำประเพณีที่มีความหมาย และจำได้ว่าคริสต์มาสหมายถึงอะไรจริงๆ',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
+    shareText: 'ฉันได้ "นักฝัน (INFP)" ใน VibeQuiz!',
+    archetype: 'Archetype #006',
     stats: {
       naughtiness: 25,
       holidaySpirit: 90,
     },
   },
 
-  // INFJ - The Wise Gift-Giver
-  INFJ: {
-    character: 'The Wise Gift-Giver',
+  // ENFJ - เจ้าบ้าน (The Host)
+  ENFJ: {
+    character: 'เจ้าบ้าน (ENFJ)',
     description:
-      'You give the best gifts because you actually listen. You remember that one thing someone mentioned in March and surprise them with it. You understand people deeply and create experiences that matter. Your gifts show you care, and that\'s the real magic.',
+      'คุณคือหัวใจของคริสต์มาส! คิดถึงคนอื่นอยู่เสมอ ใช้เวลาหลายเดือนวางแผนของขวัญที่สมบูรณ์แบบ และทำให้ทุกคนรู้สึกว่าถูกต้อนรับ คุณเป็นเจ้าภาพที่ยอดเยี่ยม จำข้อจำกัดด้านอาหารของทุกคน และทำให้คริสต์มาสรู้สึกเหมือนบ้าน',
     imageUrl:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
-    shareText: 'I got "The Wise Gift-Giver" (INFJ) on VibeQuiz!',
-    archetype: 'Archetype #006',
-    stats: {
-      naughtiness: 15,
-      holidaySpirit: 95,
-    },
-  },
-
-  // INTP - The Analytical Scrooge
-  INTP: {
-    character: 'The Analytical Scrooge',
-    description:
-      'You\'re not anti-Christmas, you\'re just... logical. Why wrap gifts when gift bags exist? Why bake for 6 hours when the store has cookies? You appreciate the holidays, but you\'ve optimized them for maximum efficiency. You\'re the one who actually reads the instruction manual.',
-    imageUrl:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCm0w85ZaKTbiIspPRaoDjvhiPny_fRci40pnLiLbetsZ0wfZYWZvvl5Q9Buv6ItSFP9Vh340KWbwtULtd5Ybhx5hUao6VIO-AmpUNgrhNkuI4SE1WZ1wLbnlJjkvf9bSc_nm6K963HBJdZGYLVw9ZaOb7G2xKIC7FYPFJKf4nE3fBXh5jaAt9hdCLDoftb82e2gH1-d_g8jGb_xzwLdZt_XOJUCfEwIxoY-iCYrBNLOPGaF7v99XqjPBjrssjzMjoczWiSuwiCA_ro',
-    shareText: 'I got "The Analytical Scrooge" (INTP) on VibeQuiz!',
+    shareText: 'ฉันได้ "เจ้าบ้าน (ENFJ)" ใน VibeQuiz!',
     archetype: 'Archetype #007',
     stats: {
-      naughtiness: 30,
-      holidaySpirit: 35,
+      naughtiness: 10,
+      holidaySpirit: 100,
     },
   },
 
-  // INTJ - The Strategic Organizer
-  INTJ: {
-    character: 'The Strategic Organizer',
+  // ENFP - มนุษย์ต้นคริสต์มาส (The Human Christmas Tree)
+  ENFP: {
+    character: 'มนุษย์ต้นคริสต์มาส (ENFP)',
     description:
-      'You\'ve had Christmas planned since last Christmas. Every gift is thought through, every tradition has a purpose, and every decoration serves a function. You create systems that work, and your holiday efficiency is unmatched. You make Christmas look easy.',
+      'คุณคือพลังงานที่ติดเชื้อของงานปาร์ตี้! เต็มไปด้วยไอเดียสุดบรรเจิดและความสุขที่เกิดขึ้นเอง คุณคือคนที่แนะนำให้สร้างตุ๊กตาหิมะตอนเที่ยงคืน หรือเริ่มแฟลชม็อบในห้าง ความตื่นเต้นของคุณแพร่กระจาย และทำให้คริสต์มาสเป็นเวทมนตร์สำหรับทุกคน',
     imageUrl:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
-    shareText: 'I got "The Strategic Organizer" (INTJ) on VibeQuiz!',
+    shareText: 'ฉันได้ "มนุษย์ต้นคริสต์มาส (ENFP)" ใน VibeQuiz!',
     archetype: 'Archetype #008',
     stats: {
-      naughtiness: 25,
-      holidaySpirit: 70,
-    },
-  },
-
-  // ESFP - The Party Animal
-  ESFP: {
-    character: 'The Party Animal',
-    description:
-      'You live for the holiday parties! You\'re the one dancing to Mariah Carey, starting carol sing-alongs, and turning every gathering into a celebration. Your energy is infectious, and you make sure everyone has fun. Christmas is your playground.',
-    imageUrl:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
-    shareText: 'I got "The Party Animal" (ESFP) on VibeQuiz!',
-    archetype: 'Archetype #009',
-    stats: {
-      naughtiness: 80,
-      holidaySpirit: 95,
-    },
-  },
-
-  // ESFJ - The Perfect Host
-  ESFJ: {
-    character: 'The Perfect Host',
-    description:
-      'Everyone\'s favorite holiday host! You remember who likes what food, you make everyone feel welcome, and your home is perfectly decorated. You excel at creating warm, inviting spaces where memories are made. You\'re the glue that holds holiday gatherings together.',
-    imageUrl:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
-    shareText: 'I got "The Perfect Host" (ESFJ) on VibeQuiz!',
-    archetype: 'Archetype #010',
-    stats: {
-      naughtiness: 20,
+      naughtiness: 75,
       holidaySpirit: 98,
     },
   },
 
-  // ESTP - The Spontaneous Celebrator
-  ESTP: {
-    character: 'The Spontaneous Celebrator',
+  // ISTJ - สมุห์บัญชี (The Accountant)
+  ISTJ: {
+    character: 'สมุห์บัญชี (ISTJ)',
     description:
-      'You\'re here for a good time, not a long time! Last-minute shopping sprees? Check. Impromptu holiday adventures? Absolutely. You live in the moment and make every Christmas celebration exciting. You\'re the one who suggests going caroling at 10 PM.',
+      'คุณจัดการงบประมาณและแบ่งบิลอย่างแม่นยำ! ทุกอย่างต้องถูกบันทึกและคำนวณอย่างถูกต้อง คุณคือคนที่ทำให้งานปาร์ตี้มีระเบียบ และไม่มีใครสามารถโกงค่าใช้จ่ายได้ คุณทำให้ทุกอย่างโปร่งใสและยุติธรรม',
     imageUrl:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
-    shareText: 'I got "The Spontaneous Celebrator" (ESTP) on VibeQuiz!',
-    archetype: 'Archetype #011',
-    stats: {
-      naughtiness: 85,
-      holidaySpirit: 85,
-    },
-  },
-
-  // ESTJ - The Holiday Manager
-  ESTJ: {
-    character: 'The Holiday Manager',
-    description:
-      'You run Christmas like a well-oiled machine. From organizing family schedules to ensuring traditions are followed perfectly, you make sure everything runs smoothly. Your organizational skills are legendary, and Christmas wouldn\'t be the same without your planning.',
-    imageUrl:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
-    shareText: 'I got "The Holiday Manager" (ESTJ) on VibeQuiz!',
-    archetype: 'Archetype #012',
-    stats: {
-      naughtiness: 15,
-      holidaySpirit: 88,
-    },
-  },
-
-  // ISFP - The Cozy Reindeer
-  ISFP: {
-    character: 'The Cozy Reindeer',
-    description:
-      'You\'re all about the cozy vibes—hot cocoa, fuzzy blankets, and watching snow fall from your window. You bring peace and calm to the holiday chaos. People come to you when they need to decompress from the festive madness. You\'re the holiday therapist everyone needs.',
-    imageUrl:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
-    shareText: 'I got "The Cozy Reindeer" (ISFP) on VibeQuiz!',
-    archetype: 'Archetype #013',
+    shareText: 'ฉันได้ "สมุห์บัญชี (ISTJ)" ใน VibeQuiz!',
+    archetype: 'Archetype #009',
     stats: {
       naughtiness: 20,
       holidaySpirit: 75,
     },
   },
 
-  // ISFJ - The Thoughtful Helper
+  // ISFJ - ผู้พิทักษ์ (The Guardian)
   ISFJ: {
-    character: 'The Thoughtful Helper',
+    character: 'ผู้พิทักษ์ (ISFJ)',
     description:
-      'You notice what others need before they ask. You\'re the one who brings extra blankets, remembers to save leftovers for everyone, and quietly makes sure everyone\'s comfortable. Your kindness is genuine and your attention to detail makes everyone feel special.',
+      'คุณปกป้องอาหารและความเป็นระเบียบในงานปาร์ตี้! สังเกตเห็นสิ่งที่คนอื่นต้องการก่อนที่พวกเขาจะถาม คุณคือคนที่นำผ้าห่มเพิ่มมา จำไว้ว่าต้องเก็บอาหารเหลือไว้ให้ทุกคน และทำให้ทุกคนรู้สึกสบายอย่างเงียบๆ',
     imageUrl:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
-    shareText: 'I got "The Thoughtful Helper" (ISFJ) on VibeQuiz!',
-    archetype: 'Archetype #014',
+    shareText: 'ฉันได้ "ผู้พิทักษ์ (ISFJ)" ใน VibeQuiz!',
+    archetype: 'Archetype #010',
     stats: {
       naughtiness: 10,
       holidaySpirit: 92,
     },
   },
 
-  // ISTP - The Reluctant Participant
-  ISTP: {
-    character: 'The Reluctant Participant',
+  // ESTJ - ผู้จัดการ (The Manager)
+  ESTJ: {
+    character: 'ผู้จัดการ (ESTJ)',
     description:
-      'You pretend to hate the holidays, but deep down you\'re secretly vibing with the festive chaos. You\'ll complain about the music, roll your eyes at decorations, but still show up to every party and somehow end up having a good time. Classic case of "I hate it but I love it."',
+      'คุณจัดการคริสต์มาสเหมือนเครื่องจักรที่ทำงานได้ดี! ตั้งแต่การจัดตารางเวลาครอบครัว ไปจนถึงการทำให้แน่ใจว่าประเพณีถูกปฏิบัติตามอย่างสมบูรณ์แบบ ทักษะการจัดระเบียบของคุณเป็นตำนาน และคริสต์มาสจะไม่เหมือนเดิมถ้าไม่มีคุณ',
     imageUrl:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCm0w85ZaKTbiIspPRaoDjvhiPny_fRci40pnLiLbetsZ0wfZYWZvvl5Q9Buv6ItSFP9Vh340KWbwtULtd5Ybhx5hUao6VIO-AmpUNgrhNkuI4SE1WZ1wLbnlJjkvf9bSc_nm6K963HBJdZGYLVw9ZaOb7G2xKIC7FYPFJKf4nE3fBXh5jaAt9hdCLDoftb82e2gH1-d_g8jGb_xzwLdZt_XOJUCfEwIxoY-iCYrBNLOPGaF7v99XqjPBjrssjzMjoczWiSuwiCA_ro',
-    shareText: 'I got "The Reluctant Participant" (ISTP) on VibeQuiz!',
-    archetype: 'Archetype #015',
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
+    shareText: 'ฉันได้ "ผู้จัดการ (ESTJ)" ใน VibeQuiz!',
+    archetype: 'Archetype #011',
     stats: {
-      naughtiness: 65,
-      holidaySpirit: 45,
+      naughtiness: 15,
+      holidaySpirit: 88,
     },
   },
 
-  // ISTJ - The Traditionalist
-  ISTJ: {
-    character: 'The Traditionalist',
+  // ESFJ - ขาเม้าท์ (The Gossip)
+  ESFJ: {
+    character: 'ขาเม้าท์ (ESFJ)',
     description:
-      'Traditions matter to you. You know exactly when to put up decorations, which ornaments go where, and how the family dinner should be served. You keep the holiday memories alive by following the same rituals year after year. Consistency is your gift to the holidays.',
+      'คุณรู้เรื่องราวทุกเรื่องในงานปาร์ตี้! คุณเป็นเจ้าภาพที่ทุกคนชื่นชอบ จำได้ว่าใครชอบอาหารอะไร ทำให้ทุกคนรู้สึกต้อนรับ และบ้านของคุณตกแต่งอย่างสมบูรณ์แบบ คุณเก่งในการสร้างพื้นที่อบอุ่นและเชิญชวนที่สร้างความทรงจำ',
     imageUrl:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
-    shareText: 'I got "The Traditionalist" (ISTJ) on VibeQuiz!',
-    archetype: 'Archetype #016',
+    shareText: 'ฉันได้ "ขาเม้าท์ (ESFJ)" ใน VibeQuiz!',
+    archetype: 'Archetype #012',
+    stats: {
+      naughtiness: 40,
+      holidaySpirit: 95,
+    },
+  },
+
+  // ISTP - ช่างซ่อม (The Fixer)
+  ISTP: {
+    character: 'ช่างซ่อม (ISTP)',
+    description:
+      'คุณซ่อมไฟและอุปกรณ์ที่เสียในงานปาร์ตี้! คุณคือคนที่ทุกคนเรียกเมื่อมีปัญหาทางเทคนิค คุณแก้ไขทุกอย่างได้อย่างเงียบๆ และกลับไปสนุกต่อได้ทันที คุณทำให้งานปาร์ตี้ดำเนินต่อไปได้แม้จะมีอุปสรรค',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCm0w85ZaKTbiIspPRaoDjvhiPny_fRci40pnLiLbetsZ0wfZYWZvvl5Q9Buv6ItSFP9Vh340KWbwtULtd5Ybhx5hUao6VIO-AmpUNgrhNkuI4SE1WZ1wLbnlJjkvf9bSc_nm6K963HBJdZGYLVw9ZaOb7G2xKIC7FYPFJKf4nE3fBXh5jaAt9hdCLDoftb82e2gH1-d_g8jGb_xzwLdZt_XOJUCfEwIxoY-iCYrBNLOPGaF7v99XqjPBjrssjzMjoczWiSuwiCA_ro',
+    shareText: 'ฉันได้ "ช่างซ่อม (ISTP)" ใน VibeQuiz!',
+    archetype: 'Archetype #013',
+    stats: {
+      naughtiness: 50,
+      holidaySpirit: 70,
+    },
+  },
+
+  // ISFP - ศิลปิน (The Artist)
+  ISFP: {
+    character: 'ศิลปิน (ISFP)',
+    description:
+      'คุณจัดอาหารและถ่ายรูปอย่างสวยงาม! คุณมีสายตาที่สวยงามและสร้างสรรค์ ทำให้ทุกอย่างดูน่าดึงดูด คุณคือคนที่ทำให้โต๊ะอาหารดูเหมือนงานศิลปะ และถ่ายรูปที่ทุกคนอยากแชร์ คุณทำให้คริสต์มาสสวยงาม',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
+    shareText: 'ฉันได้ "ศิลปิน (ISFP)" ใน VibeQuiz!',
+    archetype: 'Archetype #014',
     stats: {
       naughtiness: 20,
-      holidaySpirit: 80,
+      holidaySpirit: 85,
+    },
+  },
+
+  // ESTP - สายซิ่ง (The Racer)
+  ESTP: {
+    character: 'สายซิ่ง (ESTP)',
+    description:
+      'คุณอยู่ที่นี่เพื่อช่วงเวลาดีๆ ไม่ใช่เวลานาน! ช้อปปิ้งนาทีสุดท้าย? ได้เลย! การผจญภัยวันหยุดแบบทันที? แน่นอน! คุณอยู่กับปัจจุบันและทำให้การเฉลิมฉลองคริสต์มาสทุกครั้งน่าตื่นเต้น คุณคือคนที่แนะนำให้ไปร้องเพลงคริสต์มาสตอน 4 ทุ่ม',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
+    shareText: 'ฉันได้ "สายซิ่ง (ESTP)" ใน VibeQuiz!',
+    archetype: 'Archetype #015',
+    stats: {
+      naughtiness: 85,
+      holidaySpirit: 90,
+    },
+  },
+
+  // ESFP - ซุปตาร์ (The Superstar)
+  ESFP: {
+    character: 'ซุปตาร์ (ESFP)',
+    description:
+      'คุณคือจุดสนใจของงานปาร์ตี้! คุณเต้นไปกับเพลง Mariah Carey เริ่มร้องเพลงคริสต์มาสพร้อมกัน และเปลี่ยนการชุมนุมทุกครั้งให้เป็นการเฉลิมฉลอง พลังงานของคุณติดเชื้อ และคุณทำให้แน่ใจว่าทุกคนสนุก คริสต์มาสคือสนามเด็กเล่นของคุณ',
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCEPSzZIDds1z70CcJTYLPY9OqaRgW4KW7MmjT8KZoXoiW8PzNZe8Vk_MtSqkNjWkV59zhz48xOZ3ufZAdVMTqwvcAsixzZhLkynHZb_VMFEHKAHKTX9obXYZUTX_Zu6HnYc3IFggIqBILdeVPrXrgeFCRCrpfKObvSQUMKa2USpD-LzDoUquIQ7vWfSRkgUBwBtlHiTmh_726YeJymZFQacaC4W2n_xEoDW9CSKeqyU9El1lvPRAivjj2IinTjjCQ2BFYhLn1ZVDQd',
+    shareText: 'ฉันได้ "ซุปตาร์ (ESFP)" ใน VibeQuiz!',
+    archetype: 'Archetype #016',
+    stats: {
+      naughtiness: 80,
+      holidaySpirit: 98,
     },
   },
 };
