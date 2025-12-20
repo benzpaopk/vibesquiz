@@ -11,6 +11,7 @@ interface Question {
 interface QuizQuestionProps {
   question: Question;
   questionNumber: number;
+  totalQuestions: number;
   selectedAnswer: string | null;
   onAnswerSelect: (answer: string) => void;
   onNext: () => void;
@@ -27,6 +28,7 @@ interface QuizQuestionProps {
 export default function QuizQuestion({
   question,
   questionNumber,
+  totalQuestions,
   selectedAnswer,
   onAnswerSelect,
   onNext,
@@ -52,7 +54,7 @@ export default function QuizQuestion({
       <div className="text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
           <span className="text-sm font-bold text-primary">
-            คำถามข้อที่ {questionNumber} จาก 10
+            คำถามข้อที่ {questionNumber} จาก {totalQuestions}
           </span>
         </div>
         <h2 className="text-3xl md:text-4xl font-bold text-[#181111] dark:text-white leading-tight">

@@ -22,145 +22,100 @@ export type MBTIScores = {
 };
 
 /**
- * Calculate MBTI type from user's answers using weighted scoring system
+ * Calculate MBTI type from user's answers using counter comparison system
+ * 
+ * Questions 1-5: E vs I
+ * Questions 6-10: S vs N
+ * Questions 11-15: T vs F
+ * Questions 16-20: J vs P
+ * 
+ * Scoring: A=+2 Left, B=+1 Left, C=0, D=+1 Right, E=+2 Right
  * 
  * @param answers - Object mapping question IDs to answer choices (e.g., { 1: 'A', 2: 'B' })
  * @returns 4-letter MBTI code (e.g., "ENFP", "ISTJ")
  */
 export function calculateMBTI(answers: Record<number, string>): MBTIType {
-  // Initialize 4 counters (Positive = first trait, Negative = second trait)
-  let score_EI = 0; // Positive = E, Negative = I
-  let score_SN = 0; // Positive = S, Negative = N
-  let score_TF = 0; // Positive = T, Negative = F
-  let score_JP = 0; // Positive = J, Negative = P
+  // Initialize score counters for each trait
+  let eScore = 0; // Extraversion
+  let iScore = 0; // Introversion
+  let sScore = 0; // Sensing
+  let nScore = 0; // Intuition
+  let tScore = 0; // Thinking
+  let fScore = 0; // Feeling
+  let jScore = 0; // Judging
+  let pScore = 0; // Perceiving
 
-  // Process each answer
+  // Iterate through all answers (questions 1-20)
   for (const [questionIdStr, answer] of Object.entries(answers)) {
     const questionId = parseInt(questionIdStr, 10);
-    const answerUpper = answer.toUpperCase();
+    const answerUpper = answer.toUpperCase().trim();
 
-    // 1. Energy Axis (E vs I) - Q1, Q5, Q9
-    if (questionId === 1 || questionId === 5) {
-      // Q1 & Q5: A, B = +2 (E), C = 0, D, E = -2 (I)
-      if (answerUpper === 'A' || answerUpper === 'B') {
-        score_EI += 2;
-      } else if (answerUpper === 'D' || answerUpper === 'E') {
-        score_EI -= 2;
-      }
-      // C = 0 (no change)
-    } else if (questionId === 9) {
-      // Q9 (Influence): A (Santa), C (Reindeer) = +1 (E)
-      // D (Snowman), E (Grinch) = -1 (I)
-      // B (Elf) = 0
-      if (answerUpper === 'A' || answerUpper === 'C') {
-        score_EI += 1;
-      } else if (answerUpper === 'D' || answerUpper === 'E') {
-        score_EI -= 1;
-      }
-      // B = 0 (no change)
+    // Skip invalid question IDs or answers
+    if (questionId < 1 || questionId > 20 || !['A', 'B', 'C', 'D', 'E'].includes(answerUpper)) {
+      continue;
     }
 
-    // 2. Information Axis (S vs N) - Q2, Q6, Q10
-    if (questionId === 2) {
-      // Q2: A, B = +2 (S), C = 0, D, E = -2 (N)
-      if (answerUpper === 'A' || answerUpper === 'B') {
-        score_SN += 2;
-      } else if (answerUpper === 'D' || answerUpper === 'E') {
-        score_SN -= 2;
-      }
-      // C = 0 (no change)
-    } else if (questionId === 6) {
-      // Q6: A (Cash), B (Voucher), C (Resell) = +2 (S - Concrete value)
-      // D (Rare), E (Handmade/Letter) = -2 (N - Abstract/Sentimental)
-      if (answerUpper === 'A' || answerUpper === 'B' || answerUpper === 'C') {
-        score_SN += 2;
-      } else if (answerUpper === 'D' || answerUpper === 'E') {
-        score_SN -= 2;
-      }
-    } else if (questionId === 10) {
-      // Q10 (Influence): A (Rich), B (Health) = +1 (S)
-      // C (World), D (Self), E (Survival) = -1 (N)
-      if (answerUpper === 'A' || answerUpper === 'B') {
-        score_SN += 1;
-      } else if (answerUpper === 'C' || answerUpper === 'D' || answerUpper === 'E') {
-        score_SN -= 1;
-      }
-    }
-
-    // 3. Decision Axis (T vs F) - Q3, Q7, Q9, Q10
-    if (questionId === 3) {
-      // Q3: A (Stop crying), B (Analyze) = +2 (T)
-      // C = 0
-      // D (Cry with), E (Cheer up) = -2 (F)
-      if (answerUpper === 'A' || answerUpper === 'B') {
-        score_TF += 2;
-      } else if (answerUpper === 'D' || answerUpper === 'E') {
-        score_TF -= 2;
-      }
-      // C = 0 (no change)
-    } else if (questionId === 7) {
-      // Q7: A (Complain), B (Calc cost) = +2 (T)
-      // C (Suppress), D (Care), E (Joke) = -2 (F)
-      if (answerUpper === 'A' || answerUpper === 'B') {
-        score_TF += 2;
-      } else if (answerUpper === 'C' || answerUpper === 'D' || answerUpper === 'E') {
-        score_TF -= 2;
-      }
-    } else if (questionId === 9) {
-      // Q9 (Influence): E (Grinch) = +1 (T)
-      // D (Snowman) = -1 (F)
-      // Other answers don't affect TF
-      if (answerUpper === 'E') {
-        score_TF += 1;
-      } else if (answerUpper === 'D') {
-        score_TF -= 1;
-      }
-    } else if (questionId === 10) {
-      // Q10 (Influence): A (Success) = +1 (T)
-      // C (Kindness) = -1 (F)
-      // Other answers don't affect TF
+    // Determine which axis this question belongs to and apply scoring
+    if (questionId >= 1 && questionId <= 5) {
+      // Questions 1-5: E vs I axis
       if (answerUpper === 'A') {
-        score_TF += 1;
+        eScore += 2; // Strong Left (E)
+      } else if (answerUpper === 'B') {
+        eScore += 1; // Moderate Left (E)
       } else if (answerUpper === 'C') {
-        score_TF -= 1;
+        // Neutral - do nothing
+      } else if (answerUpper === 'D') {
+        iScore += 1; // Moderate Right (I)
+      } else if (answerUpper === 'E') {
+        iScore += 2; // Strong Right (I)
       }
-    }
-
-    // 4. Lifestyle Axis (J vs P) - Q4, Q8, Q9
-    if (questionId === 4) {
-      // Q4: A (Early), B (Standard), C (Outsource) = +2 (J)
-      // D (Last minute), E (In car) = -2 (P)
-      if (answerUpper === 'A' || answerUpper === 'B' || answerUpper === 'C') {
-        score_JP += 2;
-      } else if (answerUpper === 'D' || answerUpper === 'E') {
-        score_JP -= 2;
+    } else if (questionId >= 6 && questionId <= 10) {
+      // Questions 6-10: S vs N axis
+      if (answerUpper === 'A') {
+        sScore += 2; // Strong Left (S)
+      } else if (answerUpper === 'B') {
+        sScore += 1; // Moderate Left (S)
+      } else if (answerUpper === 'C') {
+        // Neutral - do nothing
+      } else if (answerUpper === 'D') {
+        nScore += 1; // Moderate Right (N)
+      } else if (answerUpper === 'E') {
+        nScore += 2; // Strong Right (N)
       }
-    } else if (questionId === 8) {
-      // Q8: A (Sleep early), B (Preparing) = +2 (J)
-      // C, D, E (Flow/Late) = -2 (P)
-      if (answerUpper === 'A' || answerUpper === 'B') {
-        score_JP += 2;
-      } else if (answerUpper === 'C' || answerUpper === 'D' || answerUpper === 'E') {
-        score_JP -= 2;
+    } else if (questionId >= 11 && questionId <= 15) {
+      // Questions 11-15: T vs F axis
+      if (answerUpper === 'A') {
+        tScore += 2; // Strong Left (T)
+      } else if (answerUpper === 'B') {
+        tScore += 1; // Moderate Left (T)
+      } else if (answerUpper === 'C') {
+        // Neutral - do nothing
+      } else if (answerUpper === 'D') {
+        fScore += 1; // Moderate Right (F)
+      } else if (answerUpper === 'E') {
+        fScore += 2; // Strong Right (F)
       }
-    } else if (questionId === 9) {
-      // Q9 (Influence): A (Santa), B (Elf) = +1 (J - Organized/Leader)
-      // C (Reindeer), E (Grinch) = -1 (P - Adaptable/Indy)
-      // D doesn't affect JP
-      if (answerUpper === 'A' || answerUpper === 'B') {
-        score_JP += 1;
-      } else if (answerUpper === 'C' || answerUpper === 'E') {
-        score_JP -= 1;
+    } else if (questionId >= 16 && questionId <= 20) {
+      // Questions 16-20: J vs P axis
+      if (answerUpper === 'A') {
+        jScore += 2; // Strong Left (J)
+      } else if (answerUpper === 'B') {
+        jScore += 1; // Moderate Left (J)
+      } else if (answerUpper === 'C') {
+        // Neutral - do nothing
+      } else if (answerUpper === 'D') {
+        pScore += 1; // Moderate Right (P)
+      } else if (answerUpper === 'E') {
+        pScore += 2; // Strong Right (P)
       }
     }
   }
 
-  // Determine letters with tie-breaker rules
-  // If score is exactly 0, use default tie-breaker
-  const firstLetter = score_EI > 0 ? 'E' : score_EI < 0 ? 'I' : 'E'; // Default to E (Christmas is social)
-  const secondLetter = score_SN > 0 ? 'S' : score_SN < 0 ? 'N' : 'S'; // Default to S (Questions relate to physical gifts/events)
-  const thirdLetter = score_TF > 0 ? 'T' : score_TF < 0 ? 'F' : 'F'; // Default to F (Holiday spirit is about feeling)
-  const fourthLetter = score_JP > 0 ? 'J' : score_JP < 0 ? 'P' : 'P'; // Default to P (Parties are chaotic)
+  // Determine winning letter for each axis (using >= for tie-breaker, defaulting to Left)
+  const firstLetter = eScore >= iScore ? 'E' : 'I';
+  const secondLetter = sScore >= nScore ? 'S' : 'N';
+  const thirdLetter = tScore >= fScore ? 'T' : 'F';
+  const fourthLetter = jScore >= pScore ? 'J' : 'P';
 
   // Combine into MBTI type
   const mbtiType = `${firstLetter}${secondLetter}${thirdLetter}${fourthLetter}` as MBTIType;

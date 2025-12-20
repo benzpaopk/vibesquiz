@@ -25,7 +25,8 @@ export default function QuestionPage({ params }: QuestionPageProps) {
   
   // Parse ID from URL params
   const questionId = parseInt(params.id, 10);
-  const isValidId = !isNaN(questionId) && questionId >= 1 && questionId <= 10;
+  const totalQuestions = questions.length;
+  const isValidId = !isNaN(questionId) && questionId >= 1 && questionId <= totalQuestions;
   
   // Handle mounting to prevent hydration mismatch
   useEffect(() => {
@@ -73,7 +74,7 @@ export default function QuestionPage({ params }: QuestionPageProps) {
   };
 
   const handleNext = () => {
-    if (questionId < 10) {
+    if (questionId < totalQuestions) {
       router.push(`/quizzes/who-are-you-on-christmas-day/question/${questionId + 1}`);
     } else {
       // Navigate to result page on last question
@@ -103,7 +104,7 @@ export default function QuestionPage({ params }: QuestionPageProps) {
     const maxReachableQuestion = Math.max(furthestReached + 1, 1);
     
     // Only navigate if the question is reachable
-    if (questionNumber >= 1 && questionNumber <= maxReachableQuestion && questionNumber <= 10) {
+    if (questionNumber >= 1 && questionNumber <= maxReachableQuestion && questionNumber <= totalQuestions) {
       router.push(`/quizzes/who-are-you-on-christmas-day/question/${questionNumber}`);
     }
   };
@@ -126,7 +127,7 @@ export default function QuestionPage({ params }: QuestionPageProps) {
       <div className="flex flex-col pt-24">
         <ZustandQuizProgress
           currentQuestion={questionId}
-          totalQuestions={10}
+          totalQuestions={totalQuestions}
           onStepClick={handleStepClick}
         />
         
@@ -134,12 +135,13 @@ export default function QuestionPage({ params }: QuestionPageProps) {
           <QuizQuestion
             question={currentQuestionData}
             questionNumber={questionId}
+            totalQuestions={totalQuestions}
             selectedAnswer={selectedAnswer}
             onAnswerSelect={handleAnswerSelect}
             onNext={handleNext}
             onPrevious={handlePrevious}
             canGoPrevious={questionId > 1}
-            isLastQuestion={questionId === 10}
+            isLastQuestion={questionId === totalQuestions}
           />
         </div>
       </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useQuizStore } from '@/store/useQuizStore';
 
 interface QuizProgressProps {
@@ -21,10 +21,32 @@ export default function ZustandQuizProgress({
 }: QuizProgressProps) {
   const { answers } = useQuizStore();
   const [isMounted, setIsMounted] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const currentQuestionRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  // Auto-scroll to center the current question
+  useEffect(() => {
+    if (!isMounted || !scrollContainerRef.current || !currentQuestionRef.current) return;
+
+    const container = scrollContainerRef.current;
+    const currentButton = currentQuestionRef.current;
+    
+    // Calculate scroll position to center the current question
+    const containerWidth = container.offsetWidth;
+    const buttonLeft = currentButton.offsetLeft;
+    const buttonWidth = currentButton.offsetWidth;
+    const scrollPosition = buttonLeft - (containerWidth / 2) + (buttonWidth / 2);
+
+    // Smooth scroll to center the current question
+    container.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth',
+    });
+  }, [currentQuestion, isMounted]);
 
   // Prevent hydration mismatch
   if (!isMounted) {
@@ -64,61 +86,71 @@ export default function ZustandQuizProgress({
           </span>
         </div>
 
-        {/* Question Dots */}
-        <div className="flex items-center justify-center gap-2 flex-wrap">
-          {Array.from({ length: totalQuestions }, (_, i) => {
-            const questionNum = i + 1;
-            const isAnswered = answeredQuestions.has(questionNum);
-            const isCurrent = questionNum === currentQuestion;
-            const isPast = questionNum < currentQuestion;
-            
-            // Step is reachable if: it has an answer OR it's the next question after furthest reached
-            const isReachable = questionNum <= maxReachableQuestion;
-            const isFuture = questionNum > maxReachableQuestion;
+        {/* Question Dots - Scrollable Container */}
+        <div 
+          ref={scrollContainerRef}
+          className="overflow-x-auto -mx-4 px-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          style={{
+            scrollbarWidth: 'none', // Firefox
+            msOverflowStyle: 'none', // IE/Edge
+          }}
+        >
+          <div className="flex items-center gap-3 flex-nowrap min-w-max py-1">
+            {Array.from({ length: totalQuestions }, (_, i) => {
+              const questionNum = i + 1;
+              const isAnswered = answeredQuestions.has(questionNum);
+              const isCurrent = questionNum === currentQuestion;
+              const isPast = questionNum < currentQuestion;
+              
+              // Step is reachable if: it has an answer OR it's the next question after furthest reached
+              const isReachable = questionNum <= maxReachableQuestion;
+              const isFuture = questionNum > maxReachableQuestion;
 
-            const handleClick = () => {
-              if (isReachable && onStepClick) {
-                onStepClick(questionNum);
-              }
-            };
+              const handleClick = () => {
+                if (isReachable && onStepClick) {
+                  onStepClick(questionNum);
+                }
+              };
 
-            return (
-              <button
-                key={questionNum}
-                type="button"
-                onClick={handleClick}
-                disabled={isFuture}
-                className={`
-                  w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all
-                  ${
-                    isCurrent
-                      ? 'bg-primary text-white scale-110 ring-2 ring-primary ring-offset-2 cursor-pointer hover:opacity-80'
-                      : isPast
-                        ? 'bg-green-500 text-white cursor-pointer hover:opacity-80'
-                        : isAnswered
-                          ? 'bg-primary/30 text-primary cursor-pointer hover:opacity-80'
-                          : isReachable
-                            ? 'bg-gray-200 dark:bg-[#392828] text-gray-500 dark:text-gray-400 cursor-pointer hover:opacity-80'
-                            : 'bg-gray-200 dark:bg-[#392828] text-gray-500 dark:text-gray-400 cursor-not-allowed opacity-60'
+              return (
+                <button
+                  key={questionNum}
+                  ref={isCurrent ? currentQuestionRef : null}
+                  type="button"
+                  onClick={handleClick}
+                  disabled={isFuture}
+                  className={`
+                    w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all flex-shrink-0
+                    ${
+                      isCurrent
+                        ? 'bg-primary text-white scale-110 ring-2 ring-primary ring-offset-1 cursor-pointer hover:opacity-80'
+                        : isPast
+                          ? 'bg-green-500 text-white cursor-pointer hover:opacity-80'
+                          : isAnswered
+                            ? 'bg-primary/30 text-primary cursor-pointer hover:opacity-80'
+                            : isReachable
+                              ? 'bg-gray-200 dark:bg-[#392828] text-gray-500 dark:text-gray-400 cursor-pointer hover:opacity-80'
+                              : 'bg-gray-200 dark:bg-[#392828] text-gray-500 dark:text-gray-400 cursor-not-allowed opacity-60'
+                    }
+                  `}
+                  title={
+                    isFuture
+                      ? `Question ${questionNum} (not available yet)`
+                      : isAnswered
+                        ? `Question ${questionNum} (answered) - Click to review`
+                        : `Question ${questionNum} - Click to navigate`
                   }
-                `}
-                title={
-                  isFuture
-                    ? `Question ${questionNum} (not available yet)`
-                    : isAnswered
-                      ? `Question ${questionNum} (answered) - Click to review`
-                      : `Question ${questionNum} - Click to navigate`
-                }
-                aria-label={
-                  isFuture
-                    ? `Question ${questionNum} - Not available yet`
-                    : `Go to question ${questionNum}`
-                }
-              >
-                {questionNum}
-              </button>
-            );
-          })}
+                  aria-label={
+                    isFuture
+                      ? `Question ${questionNum} - Not available yet`
+                      : `Go to question ${questionNum}`
+                  }
+                >
+                  {questionNum}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
