@@ -30,6 +30,7 @@ export default function QuestionPage({ params }: QuestionPageProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [totalQuestions, setTotalQuestions] = useState<number>(20);
 
   useEffect(() => {
     // Validate session
@@ -56,6 +57,9 @@ export default function QuestionPage({ params }: QuestionPageProps) {
       // In production, fetch from API
       // For now, use mock data
       const questions = quizData.questions || generateMockQuestions();
+      
+      // Store total questions count
+      setTotalQuestions(questions.length);
       
       if (questionNumber < 1 || questionNumber > questions.length) {
         setError('Invalid question number');
@@ -96,7 +100,6 @@ export default function QuestionPage({ params }: QuestionPageProps) {
       saveAnswer(sessionId, questionNumber - 1, selectedAnswer);
     }
 
-    const totalQuestions = 10; // From quiz config
     if (questionNumber < totalQuestions) {
       router.push(`/quiz/${slug}/question/${questionNumber + 1}?session=${sessionId}`);
     } else {
@@ -144,7 +147,7 @@ export default function QuestionPage({ params }: QuestionPageProps) {
     <div className="min-h-screen bg-background-light dark:bg-background-dark">
       <QuizProgress
         currentQuestion={questionNumber}
-        totalQuestions={10}
+        totalQuestions={totalQuestions}
         sessionId={sessionId!}
       />
       
@@ -152,12 +155,13 @@ export default function QuestionPage({ params }: QuestionPageProps) {
         <QuizQuestion
           question={question}
           questionNumber={questionNumber}
+          totalQuestions={totalQuestions}
           selectedAnswer={selectedAnswer}
           onAnswerSelect={handleAnswerSelect}
           onNext={handleNext}
           onPrevious={handlePrevious}
           canGoPrevious={questionNumber > 1}
-          isLastQuestion={questionNumber === 10}
+          isLastQuestion={questionNumber === totalQuestions}
         />
       </div>
     </div>

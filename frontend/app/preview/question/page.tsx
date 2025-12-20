@@ -38,7 +38,7 @@ export default function QuestionPreviewPage() {
 
   const handleNext = () => {
     console.log('Next clicked');
-    if (questionNumber < 10) {
+    if (questionNumber < 20) {
       setQuestionNumber(questionNumber + 1);
       setSelectedAnswer(null);
     } else {
@@ -59,7 +59,7 @@ export default function QuestionPreviewPage() {
     <div className="min-h-screen bg-background-light dark:bg-background-dark">
       <QuizProgress
         currentQuestion={questionNumber}
-        totalQuestions={10}
+        totalQuestions={20}
         sessionId="preview_session"
       />
       
@@ -67,12 +67,13 @@ export default function QuestionPreviewPage() {
         <QuizQuestion
           question={mockQuestion}
           questionNumber={questionNumber}
+          totalQuestions={20}
           selectedAnswer={selectedAnswer}
           onAnswerSelect={handleAnswerSelect}
           onNext={handleNext}
           onPrevious={handlePrevious}
           canGoPrevious={questionNumber > 1}
-          isLastQuestion={questionNumber === 10}
+          isLastQuestion={questionNumber === 20}
         />
       </div>
     </div>
