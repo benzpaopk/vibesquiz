@@ -156,19 +156,8 @@ export default function QuizResults({ results, sessionId, quizSlug, onRetake }: 
             <div className="relative flex flex-col-reverse lg:flex-row gap-8 lg:gap-12 items-stretch">
               {/* Text Content (Left) */}
               <div className="flex flex-col gap-6 flex-[3] justify-center">
-                {/* Archetype Tag & Title */}
+                {/* Title */}
                 <div className="flex flex-col gap-2">
-                  <div className="inline-flex items-center gap-2 self-start rounded-full bg-white/5 px-3 py-1 border border-white/10">
-                    <span
-                      className="material-symbols-outlined text-sm text-primary"
-                      aria-hidden="true"
-                    >
-                      fingerprint
-                    </span>
-                    <span className="text-white/60 text-xs font-bold tracking-widest uppercase">
-                      {results.archetype || 'Archetype #042'}
-                    </span>
-                  </div>
                   <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-black leading-[0.95] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">
                     {results.character}
                   </h2>
