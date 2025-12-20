@@ -183,21 +183,16 @@ export default function QuizResults({ results, sessionId, quizSlug, onRetake }: 
               {/* Image Content (Right) */}
               <div className="flex-[2] relative group/image">
                 <div className="absolute inset-0 bg-primary rounded-2xl rotate-3 opacity-20 blur-lg group-hover/image:opacity-30 transition-opacity duration-500" />
-                <div className="relative h-full min-h-[400px] w-full rounded-2xl border-2 border-white/10 shadow-2xl overflow-hidden">
+                <div className="w-full max-w-lg aspect-square relative rounded-2xl overflow-hidden shadow-xl mx-auto border-2 border-white/10">
                   <Image
                     src={results.imageUrl}
                     alt={`${results.character} character illustration`}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 500px"
+                    sizes="(max-width: 768px) 100vw, 512px"
                     priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-surface-darker/80 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 text-center">
-                    <span className="inline-block px-3 py-1 bg-black/50 backdrop-blur-sm rounded-full text-[10px] font-mono text-white/50 border border-white/10">
-                      AI GENERATED IMAGE
-                    </span>
-                  </div>
                 </div>
               </div>
             </div>
