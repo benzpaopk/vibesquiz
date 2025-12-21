@@ -4,228 +4,248 @@ import type { MBTIType } from '../utils/calculateResult';
 /**
  * Christmas Characters mapped to 16 MBTI personality types
  */
-export const MBTI_CHRISTMAS_CHARACTERS: Record<MBTIType, CharacterResult> = {
-  // INTJ - นักวางแผน (The Planner)
+export const CHRISTMAS_CHARACTERS: Record<MBTIType, CharacterResult> = {
   INTJ: {
-    character: 'นักวางแผน (INTJ)',
-    description:
-      'งานปาร์ตี้ต้องมี Timeline! คุณคือผู้อยู่เบื้องหลังความเป๊ะของตารางงาน วางแผนจับฉลากยันเวลาเลิกงาน ทุกอย่างต้องเป็นไปตามแผนที่วางไว้ ไม่มีอะไรหลุดออกจากระบบของคุณได้เลย',
-    imageUrl: '/images/characters/intj.webp',
-    shareText: 'ฉันได้ "นักวางแผน (INTJ)" ใน VibeQuiz!',
-    archetype: 'Archetype #001',
-    stats: {
-      naughtiness: 25,
-      holidaySpirit: 85,
-    },
+    id: "INTJ",
+    title: "The Mastermind - จอมบงการหน้านิ่ง",
+    description: "ผู้อยู่เหนือห่วงโซ่อาหาร",
+    quote: "แผนสำรองมีถึง Z แล้ว ถ้าพวกเธอไม่ทำพังนะ",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 5 },
+      { label: "สกิลเลือกของขวัญ", value: 100 },
+      { label: "หน้าเหวี่ยง", value: 100 }
+    ],
+    warning: "อย่าเปลี่ยนแผนกระทันหัน เดี๋ยวองค์ลง",
+    bestMatch: "ENFP (ตัวป่วนที่ยอมให้คนเดียว)",
+    nemesis: "ESFP (เสียงดังเกิน รับไม่ไหว)",
+    image: "/images/characters/intj.webp"
   },
-
-  // INTP - วิศวกรไฟ (The Light Engineer)
   INTP: {
-    character: 'วิศวกรไฟ (INTP)',
-    description:
-      'คุณหมกมุ่นกับการจัดแสงไฟคริสต์มาสให้สมบูรณ์แบบ วิเคราะห์ว่าต้องใช้หลอดไฟกี่ดวง วางตำแหน่งยังไงให้สวยงามและประหยัดไฟที่สุด คุณคือคนที่อ่านคู่มือการติดตั้งไฟคริสต์มาสจนจบ',
-    imageUrl: '/images/characters/intp.webp',
-    shareText: 'ฉันได้ "วิศวกรไฟ (INTP)" ใน VibeQuiz!',
-    archetype: 'Archetype #002',
-    stats: {
-      naughtiness: 30,
-      holidaySpirit: 70,
-    },
+    id: "INTP",
+    title: "The Glitch - นักวิจัยสิ่งลี้ลับ",
+    description: "ที่เรียกว่าการเข้าสังคม",
+    quote: "ซานต้าเดินทางด้วยความเร็วแสงได้ไงอะ? มาถกกัน",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 0 },
+      { label: "สกิลเลือกของขวัญ", value: 50 },
+      { label: "ความเบียว", value: 100 }
+    ],
+    warning: "อย่าถาม 'ทำไม' ถ้าไม่อยากฟังเลคเชอร์ 3 ชั่วโมง",
+    bestMatch: "ENTJ (บอสที่คอยลากไปอาบน้ำ)",
+    nemesis: "ESFJ (คุยกันคนละภาษา)",
+    image: "/images/characters/intp.webp"
   },
-
-  // ENTJ - บอสปาร์ตี้ (The Party Boss)
   ENTJ: {
-    character: 'บอสปาร์ตี้ (ENTJ)',
-    description:
-      'คุณคือ CEO ของงานปาร์ตี้คริสต์มาส! จัดการทุกอย่างให้เป็นระบบ มอบหมายงานให้ทุกคนอย่างมีประสิทธิภาพ งานปาร์ตี้จะไม่เกิดขึ้นถ้าไม่มีคุณเป็นผู้กำกับ คุณทำให้ทุกอย่างดูง่าย แต่จริงๆ แล้วมันซับซ้อนมาก',
-    imageUrl: '/images/characters/entj.webp',
-    shareText: 'ฉันได้ "บอสปาร์ตี้ (ENTJ)" ใน VibeQuiz!',
-    archetype: 'Archetype #003',
-    stats: {
-      naughtiness: 20,
-      holidaySpirit: 90,
-    },
+    id: "ENTJ",
+    title: "The CEO Energy - บอสตัวตึง",
+    description: "สั่งเก่งเหมือนเป็นสปอนเซอร์งาน",
+    quote: "ปาร์ตี้เริ่ม 1 ทุ่ม ห้ามเลท ห้ามเท ห้ามตาย",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 100 },
+      { label: "สกิลเลือกของขวัญ", value: 90 },
+      { label: "ความเผด็จการ", value: 100 }
+    ],
+    warning: "อย่าขัดคำสั่ง เดี๋ยวโดนสาป",
+    bestMatch: "INTP (ลูกน้องหัวกะทิ)",
+    nemesis: "ISFP (ช้าจนหงุดหงิด)",
+    image: "/images/characters/entj.webp"
   },
-
-  // ENTP - ตัวปั่น (The Prankster)
   ENTP: {
-    character: 'ตัวปั่น (ENTP)',
-    description:
-      'คุณสร้างความวุ่นวายเพื่อความสนุก! วางแผนแกล้งเพื่อนในงานปาร์ตี้ สร้างสถานการณ์ที่ไม่มีใครคาดคิด คุณคือชีวิตของงานปาร์ตี้ แต่ก็เป็นความตายของแผนการที่วางไว้ รับความวุ่นวายกันเถอะ!',
-    imageUrl: '/images/characters/entp.webp',
-    shareText: 'ฉันได้ "ตัวปั่น (ENTP)" ใน VibeQuiz!',
-    archetype: 'Archetype #004',
-    stats: {
-      naughtiness: 95,
-      holidaySpirit: 85,
-    },
+    id: "ENTP",
+    title: "The Chaos Maker - ตัวปั่นระดับตำนาน",
+    description: "หาเรื่องคือ Passion",
+    quote: "กวางเรนเดียร์อร่อยมั้ย? อยากลองชิมว่ะ",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 100 },
+      { label: "สกิลเลือกของขวัญ", value: 20 },
+      { label: "ความน่าทุบหลัง", value: 100 }
+    ],
+    warning: "ระวังของขวัญที่เป็นกล่องเปล่า",
+    bestMatch: "INFJ (คนเดียวที่เอาอยู่)",
+    nemesis: "ISFJ (เจ้าระเบียบที่โดนปั่นหัวหมุน)",
+    image: "/images/characters/entp.webp"
   },
-
-  // INFJ - ผู้กุมความลับ (The Secret Keeper)
   INFJ: {
-    character: 'ผู้กุมความลับ (INFJ)',
-    description:
-      'คุณรู้ว่าใครได้ของอะไรใน Secret Santa! คุณเป็นคนที่เก็บความลับได้ดีที่สุด และเข้าใจจิตใจของทุกคนอย่างลึกซึ้ง ของขวัญที่คุณให้มักจะมีความหมายพิเศษ เพราะคุณฟังและจำรายละเอียดเล็กๆ น้อยๆ',
-    imageUrl: '/images/characters/infj.webp',
-    shareText: 'ฉันได้ "ผู้กุมความลับ (INFJ)" ใน VibeQuiz!',
-    archetype: 'Archetype #005',
-    stats: {
-      naughtiness: 15,
-      holidaySpirit: 95,
-    },
+    id: "INFJ",
+    title: "The Mystic - ร่างทรงซานต้า",
+    description: "รู้ทุกอย่าง ยกเว้นเรื่องตัวเอง",
+    quote: "ไม่ต้องพูด... ฉันรู้นะว่าแกเพิ่งเลิกกับแฟน โอ๋ๆ",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 15 },
+      { label: "สกิลเลือกของขวัญ", value: 100 },
+      { label: "สกิลอ่านใจ", value: 99 }
+    ],
+    warning: "อย่าโกหก นางดูออกตั้งแต่หน้าประตู",
+    bestMatch: "ENTP (ตัวปั่นที่นางเอ็นดู)",
+    nemesis: "ESTP (พวกหยาบกระด้าง)",
+    image: "/images/characters/infj.webp"
   },
-
-  // INFP - นักฝัน (The Dreamer)
   INFP: {
-    character: 'นักฝัน (INFP)',
-    description:
-      'คุณหลงใหลในเวทมนตร์ของวันหยุด! คริสต์มาสไม่ใช่แค่วันหยุด แต่เป็นความรู้สึก เป็นช่วงเวลาที่หยุดนิ่ง คุณเขียนการ์ดด้วยใจ จัดทำประเพณีที่มีความหมาย และจำได้ว่าคริสต์มาสหมายถึงอะไรจริงๆ',
-    imageUrl: '/images/characters/infp.webp',
-    shareText: 'ฉันได้ "นักฝัน (INFP)" ใน VibeQuiz!',
-    archetype: 'Archetype #006',
-    stats: {
-      naughtiness: 25,
-      holidaySpirit: 90,
-    },
+    id: "INFP",
+    title: "The Sad Reindeer - ตัวเล็กสเปคเธอ",
+    description: "(แต่ขี้แง)",
+    quote: "คริสต์มาสปีนี้ขอแค่นอนดู Harry Potter วนไป",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 5 },
+      { label: "สกิลเลือกของขวัญ", value: 100 },
+      { label: "ความบ่อน้ำตาตื้น", value: 99 }
+    ],
+    warning: "อย่าเปิดเพลงเศร้า เดี๋ยวงานกร่อยเพราะร้องไห้",
+    bestMatch: "ENFJ (มัมหมีดูแลหนู)",
+    nemesis: "ESTJ (ดุเกิน รับบ่ไหว)",
+    image: "/images/characters/infp.webp"
   },
-
-  // ENFJ - เจ้าบ้าน (The Host)
   ENFJ: {
-    character: 'เจ้าบ้าน (ENFJ)',
-    description:
-      'คุณคือหัวใจของคริสต์มาส! คิดถึงคนอื่นอยู่เสมอ ใช้เวลาหลายเดือนวางแผนของขวัญที่สมบูรณ์แบบ และทำให้ทุกคนรู้สึกว่าถูกต้อนรับ คุณเป็นเจ้าภาพที่ยอดเยี่ยม จำข้อจำกัดด้านอาหารของทุกคน และทำให้คริสต์มาสรู้สึกเหมือนบ้าน',
-    imageUrl: '/images/characters/enfj.webp',
-    shareText: 'ฉันได้ "เจ้าบ้าน (ENFJ)" ใน VibeQuiz!',
-    archetype: 'Archetype #007',
-    stats: {
-      naughtiness: 10,
-      holidaySpirit: 100,
-    },
+    id: "ENFJ",
+    title: "The Main Character - ตัวแม่แคร์ทุกจักรวาล",
+    description: "ตัวแม่แคร์ทุกจักรวาล",
+    quote: "ทุกคนกินข้าวยัง? เติมน้ำมั้ย? หนาวป่าวลูก?",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 100 },
+      { label: "สกิลเลือกของขวัญ", value: 95 },
+      { label: "สกิลเทศนา", value: 80 }
+    ],
+    warning: "ห้ามบอกว่า 'ไม่เป็นไร' นางจะยิ่งห่วง",
+    bestMatch: "INFP (ลูกรักหัวแก้วหัวแหวน)",
+    nemesis: "ISTP (พวกเย็นชา ไร้หัวใจ)",
+    image: "/images/characters/enfj.webp"
   },
-
-  // ENFP - มนุษย์ต้นคริสต์มาส (The Human Christmas Tree)
   ENFP: {
-    character: 'มนุษย์ต้นคริสต์มาส (ENFP)',
-    description:
-      'คุณคือพลังงานที่ติดเชื้อของงานปาร์ตี้! เต็มไปด้วยไอเดียสุดบรรเจิดและความสุขที่เกิดขึ้นเอง คุณคือคนที่แนะนำให้สร้างตุ๊กตาหิมะตอนเที่ยงคืน หรือเริ่มแฟลชม็อบในห้าง ความตื่นเต้นของคุณแพร่กระจาย และทำให้คริสต์มาสเป็นเวทมนตร์สำหรับทุกคน',
-    imageUrl: '/images/characters/enfp.webp',
-    shareText: 'ฉันได้ "มนุษย์ต้นคริสต์มาส (ENFP)" ใน VibeQuiz!',
-    archetype: 'Archetype #008',
-    stats: {
-      naughtiness: 75,
-      holidaySpirit: 98,
-    },
+    id: "ENFP",
+    title: "The Hyper Elf - เอลฟ์ดีดกะโหลก",
+    description: "พลังงานนิวเคลียร์",
+    quote: "แกกก! ดูนี่ดิ! น่ารักป่ะ! กรี๊ดดด! ไปเต้นกัน!",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 100 },
+      { label: "สกิลเลือกของขวัญ", value: 50 },
+      { label: "สมาธิสั้น", value: 100 }
+    ],
+    warning: "เตรียมยาดมไว้ให้เพื่อนด้วย เพราะตามไม่ทัน",
+    bestMatch: "INTJ (คนนิ่งๆ ที่เราชอบไปวอแว)",
+    nemesis: "ISTJ (ครูฝ่ายปกครองสุดโหด)",
+    image: "/images/characters/enfp.webp"
   },
-
-  // ISTJ - สมุห์บัญชี (The Accountant)
   ISTJ: {
-    character: 'สมุห์บัญชี (ISTJ)',
-    description:
-      'คุณจัดการงบประมาณและแบ่งบิลอย่างแม่นยำ! ทุกอย่างต้องถูกบันทึกและคำนวณอย่างถูกต้อง คุณคือคนที่ทำให้งานปาร์ตี้มีระเบียบ และไม่มีใครสามารถโกงค่าใช้จ่ายได้ คุณทำให้ทุกอย่างโปร่งใสและยุติธรรม',
-    imageUrl: '/images/characters/istj.webp',
-    shareText: 'ฉันได้ "สมุห์บัญชี (ISTJ)" ใน VibeQuiz!',
-    archetype: 'Archetype #009',
-    stats: {
-      naughtiness: 20,
-      holidaySpirit: 75,
-    },
+    id: "ISTJ",
+    title: "The System - มนุษย์ Excel",
+    description: "เป๊ะจนเพื่อนเครียด",
+    quote: "ใบเสร็จค่าของขวัญอยู่ไหน? ต้องลงบัญชีนะ",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 20 },
+      { label: "สกิลเลือกของขวัญ", value: 40 },
+      { label: "ความเป๊ะ", value: 100 }
+    ],
+    warning: "ห้ามทำแก้วแตก เดี๋ยวโดนหักเงิน",
+    bestMatch: "ESFP (ตัวสร้างสีสันที่ขาดไม่ได้)",
+    nemesis: "ENFP (ตัวทำลายระบบระเบียบ)",
+    image: "/images/characters/istj.webp"
   },
-
-  // ISFJ - ผู้พิทักษ์ (The Guardian)
   ISFJ: {
-    character: 'ผู้พิทักษ์ (ISFJ)',
-    description:
-      'คุณปกป้องอาหารและความเป็นระเบียบในงานปาร์ตี้! สังเกตเห็นสิ่งที่คนอื่นต้องการก่อนที่พวกเขาจะถาม คุณคือคนที่นำผ้าห่มเพิ่มมา จำไว้ว่าต้องเก็บอาหารเหลือไว้ให้ทุกคน และทำให้ทุกคนรู้สึกสบายอย่างเงียบๆ',
-    imageUrl: '/images/characters/isfj.webp',
-    shareText: 'ฉันได้ "ผู้พิทักษ์ (ISFJ)" ใน VibeQuiz!',
-    archetype: 'Archetype #010',
-    stats: {
-      naughtiness: 10,
-      holidaySpirit: 92,
-    },
+    id: "ISFJ",
+    title: "The Guardian Angel - เทวดาประจำกลุ่ม",
+    description: "ผู้เสียสละ",
+    quote: "ไม่เป็นไรแก เราทำเอง แกไปสนุกเถอะ (เก็บจานเงียบๆ)",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 50 },
+      { label: "สกิลเลือกของขวัญ", value: 90 },
+      { label: "สกิลแม่บ้าน", value: 100 }
+    ],
+    warning: "อย่าลืมขอบคุณ ไม่งั้นเขาจะน้อยใจลึกๆ",
+    bestMatch: "ESTP (คนที่เขาอยากดูแล)",
+    nemesis: "ENTP (ตัวร้ายทำลายจิตใจ)",
+    image: "/images/characters/isfj.webp"
   },
-
-  // ESTJ - ผู้จัดการ (The Manager)
   ESTJ: {
-    character: 'ผู้จัดการ (ESTJ)',
-    description:
-      'คุณจัดการคริสต์มาสเหมือนเครื่องจักรที่ทำงานได้ดี! ตั้งแต่การจัดตารางเวลาครอบครัว ไปจนถึงการทำให้แน่ใจว่าประเพณีถูกปฏิบัติตามอย่างสมบูรณ์แบบ ทักษะการจัดระเบียบของคุณเป็นตำนาน และคริสต์มาสจะไม่เหมือนเดิมถ้าไม่มีคุณ',
-    imageUrl: '/images/characters/estj.webp',
-    shareText: 'ฉันได้ "ผู้จัดการ (ESTJ)" ใน VibeQuiz!',
-    archetype: 'Archetype #011',
-    stats: {
-      naughtiness: 15,
-      holidaySpirit: 88,
-    },
+    id: "ESTJ",
+    title: "The Event Manager - ผอ.กองปาร์ตี้",
+    description: "ชี้สั่งดั่งใจนึก",
+    quote: "ต้นคริสต์มาสเอียงซ้ายไป 2 องศา แก้เดี๋ยวนี้!",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 80 },
+      { label: "สกิลเลือกของขวัญ", value: 70 },
+      { label: "เจ้ากี้เจ้าการ", value: 100 }
+    ],
+    warning: "ห้ามอู้งานต่อหน้านาง โดนเชือดแน่",
+    bestMatch: "ISFP (ลูกน้องหัวอ่อน)",
+    nemesis: "INFP (พวกอ่อนไหว ไร้สาระ)",
+    image: "/images/characters/estj.webp"
   },
-
-  // ESFJ - ขาเม้าท์ (The Gossip)
   ESFJ: {
-    character: 'ขาเม้าท์ (ESFJ)',
-    description:
-      'คุณรู้เรื่องราวทุกเรื่องในงานปาร์ตี้! คุณเป็นเจ้าภาพที่ทุกคนชื่นชอบ จำได้ว่าใครชอบอาหารอะไร ทำให้ทุกคนรู้สึกต้อนรับ และบ้านของคุณตกแต่งอย่างสมบูรณ์แบบ คุณเก่งในการสร้างพื้นที่อบอุ่นและเชิญชวนที่สร้างความทรงจำ',
-    imageUrl: '/images/characters/esfj.webp',
-    shareText: 'ฉันได้ "ขาเม้าท์ (ESFJ)" ใน VibeQuiz!',
-    archetype: 'Archetype #012',
-    stats: {
-      naughtiness: 40,
-      holidaySpirit: 95,
-    },
+    id: "ESFJ",
+    title: "The Gossip Queen - ซานต้าขาเม้าท์",
+    description: "รู้โลกรู้",
+    quote: "อุ๊ย! อย่าบอกใครนะ... คือเรื่องมันเป็นงี้แก!",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 100 },
+      { label: "สกิลเลือกของขวัญ", value: 85 },
+      { label: "สกิลปล่อยข่าว", value: 100 }
+    ],
+    warning: "ความลับไม่มีในโลก ถ้าบอกคนนี้",
+    bestMatch: "ISTP (ผู้ฟังที่ดี ฟังอย่างเดียว)",
+    nemesis: "INTP (มนุษย์ต่างดาวคุยไม่รู้เรื่อง)",
+    image: "/images/characters/esfj.webp"
   },
-
-  // ISTP - ช่างซ่อม (The Fixer)
   ISTP: {
-    character: 'ช่างซ่อม (ISTP)',
-    description:
-      'คุณซ่อมไฟและอุปกรณ์ที่เสียในงานปาร์ตี้! คุณคือคนที่ทุกคนเรียกเมื่อมีปัญหาทางเทคนิค คุณแก้ไขทุกอย่างได้อย่างเงียบๆ และกลับไปสนุกต่อได้ทันที คุณทำให้งานปาร์ตี้ดำเนินต่อไปได้แม้จะมีอุปสรรค',
-    imageUrl: '/images/characters/istp.webp',
-    shareText: 'ฉันได้ "ช่างซ่อม (ISTP)" ใน VibeQuiz!',
-    archetype: 'Archetype #013',
-    stats: {
-      naughtiness: 50,
-      holidaySpirit: 70,
-    },
+    id: "ISTP",
+    title: "The Cool Fixer - ช่างซ่อมหน้านิ่ง",
+    description: "เท่จนงง",
+    quote: "ไฟดับเหรอ? หลบไป... (ซ่อมเสร็จใน 2 วิ)",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 10 },
+      { label: "สกิลเลือกของขวัญ", value: 30 },
+      { label: "ความ Cool", value: 100 }
+    ],
+    warning: "อย่าเซ้าซี้ เขารำคาญคนพูดมาก",
+    bestMatch: "ESFJ (ขาลุยที่เคมีเข้ากัน)",
+    nemesis: "ENFJ (พวกโลกสวยเกินเหตุ)",
+    image: "/images/characters/istp.webp"
   },
-
-  // ISFP - ศิลปิน (The Artist)
   ISFP: {
-    character: 'ศิลปิน (ISFP)',
-    description:
-      'คุณจัดอาหารและถ่ายรูปอย่างสวยงาม! คุณมีสายตาที่สวยงามและสร้างสรรค์ ทำให้ทุกอย่างดูน่าดึงดูด คุณคือคนที่ทำให้โต๊ะอาหารดูเหมือนงานศิลปะ และถ่ายรูปที่ทุกคนอยากแชร์ คุณทำให้คริสต์มาสสวยงาม',
-    imageUrl: '/images/characters/isfp.webp',
-    shareText: 'ฉันได้ "ศิลปิน (ISFP)" ใน VibeQuiz!',
-    archetype: 'Archetype #014',
-    stats: {
-      naughtiness: 20,
-      holidaySpirit: 85,
-    },
+    id: "ISFP",
+    title: "The Aesthetic - ศิลปินอินดี้",
+    description: "คุมโทนไอจีเป็นชีวิตจิตใจ",
+    quote: "มุมนี้แสงไม่ได้อะแก ขยับซ้ายหน่อย... นั่นแหละ!",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 40 },
+      { label: "สกิลเลือกของขวัญ", value: 100 },
+      { label: "ความตรงต่อเวลา", value: 0 }
+    ],
+    warning: "ห้ามแท็กรูปที่นางยังไม่แต่งหน้า",
+    bestMatch: "ESTJ (คนคุมที่นางแอบกลัว)",
+    nemesis: "ENTJ (บอสจอมเผด็จการ)",
+    image: "/images/characters/isfp.webp"
   },
-
-  // ESTP - สายซิ่ง (The Racer)
   ESTP: {
-    character: 'สายซิ่ง (ESTP)',
-    description:
-      'คุณอยู่ที่นี่เพื่อช่วงเวลาดีๆ ไม่ใช่เวลานาน! ช้อปปิ้งนาทีสุดท้าย? ได้เลย! การผจญภัยวันหยุดแบบทันที? แน่นอน! คุณอยู่กับปัจจุบันและทำให้การเฉลิมฉลองคริสต์มาสทุกครั้งน่าตื่นเต้น คุณคือคนที่แนะนำให้ไปร้องเพลงคริสต์มาสตอน 4 ทุ่ม',
-    imageUrl: '/images/characters/estp.webp',
-    shareText: 'ฉันได้ "สายซิ่ง (ESTP)" ใน VibeQuiz!',
-    archetype: 'Archetype #015',
-    stats: {
-      naughtiness: 85,
-      holidaySpirit: 90,
-    },
+    id: "ESTP",
+    title: "The Party Animal - ตัวตึงสายลุย",
+    description: "ยิ่งห้ามนี่ยิ่งยุ",
+    quote: "หมดแก้วป่ะล่ะ? หรือกลัว? จัดไปวัยรุ่น!",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 100 },
+      { label: "สกิลเลือกของขวัญ", value: 50 },
+      { label: "ความหาทำ", value: 100 }
+    ],
+    warning: "ระวังโดนท้าให้กินอะไรแปลกๆ",
+    bestMatch: "ISFJ (คนคอยตามเช็ดตามล้าง)",
+    nemesis: "INFJ (แม่ชีผู้เคร่งครัด)",
+    image: "/images/characters/estp.webp"
   },
-
-  // ESFP - ซุปตาร์ (The Superstar)
   ESFP: {
-    character: 'ซุปตาร์ (ESFP)',
-    description:
-      'คุณคือจุดสนใจของงานปาร์ตี้! คุณเต้นไปกับเพลง Mariah Carey เริ่มร้องเพลงคริสต์มาสพร้อมกัน และเปลี่ยนการชุมนุมทุกครั้งให้เป็นการเฉลิมฉลอง พลังงานของคุณติดเชื้อ และคุณทำให้แน่ใจว่าทุกคนสนุก คริสต์มาสคือสนามเด็กเล่นของคุณ',
-    imageUrl: '/images/characters/esfp.webp',
-    shareText: 'ฉันได้ "ซุปตาร์ (ESFP)" ใน VibeQuiz!',
-    archetype: 'Archetype #016',
-    stats: {
-      naughtiness: 80,
-      holidaySpirit: 98,
-    },
-  },
+    id: "ESFP",
+    title: "The Superstar - ตัวมารดาแห่งวงการแสงสี",
+    description: "ตัวมารดาแห่งวงการแสงสี",
+    quote: "กล้องอยู่ไหน? ฉันอยู่นั่น!",
+    stats: [
+      { label: "ความอึดปาร์ตี้", value: 100 },
+      { label: "สกิลเลือกของขวัญ", value: 80 },
+      { label: "ความหิวแสง", value: 100 }
+    ],
+    warning: "อย่าแย่งไมค์ ถือว่าขอ",
+    bestMatch: "ISTJ (คนดูที่นั่งมองแบบงงๆ)",
+    nemesis: "INTJ (คนขวางโลกที่น่ารำคาญ)",
+    image: "/images/characters/esfp.webp"
+  }
 };
+
+// Export as MBTI_CHRISTMAS_CHARACTERS for backward compatibility
+export const MBTI_CHRISTMAS_CHARACTERS = CHRISTMAS_CHARACTERS;
