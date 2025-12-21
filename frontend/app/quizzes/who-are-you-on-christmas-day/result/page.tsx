@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useQuizStore } from '@/store/useQuizStore';
 import { calculateCharacter } from '@/lib/quiz-calculator';
 import type { CharacterResult } from '@/lib/data/christmas-characters';
+import html2canvas from 'html2canvas';
 
 /**
  * Result page for the Christmas quiz.
@@ -19,6 +20,7 @@ export default function ResultPage() {
   const [results, setResults] = useState<CharacterResult | null>(null);
   const [isMounted, setIsMounted] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
+  const [isGeneratingStory, setIsGeneratingStory] = useState(false);
 
   // Handle mounting to prevent hydration mismatch
   useEffect(() => {
@@ -87,6 +89,80 @@ export default function ResultPage() {
         return;
       }
       window.open(urls[platform], '_blank', 'width=600,height=400');
+    }
+  };
+
+  const handleShareToStory = async () => {
+    if (!results) return;
+
+    setIsGeneratingStory(true);
+    try {
+      // Get the hidden template element
+      const templateElement = document.getElementById('ig-story-template');
+      if (!templateElement) {
+        console.error('Template element not found');
+        setIsGeneratingStory(false);
+        return;
+      }
+
+      // Capture the element with html2canvas
+      const canvas = await html2canvas(templateElement, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: null,
+        allowTaint: false,
+        logging: false,
+      });
+
+      // Convert canvas to blob
+      canvas.toBlob(async (blob) => {
+        if (!blob) {
+          console.error('Failed to create blob');
+          setIsGeneratingStory(false);
+          return;
+        }
+
+        // Create File object
+        const file = new File([blob], 'christmas-character.png', { type: 'image/png' });
+
+        // Try native share API (works on mobile)
+        if (navigator.share) {
+          // Check if files can be shared (some browsers support it)
+          const canShareFiles = navigator.canShare ? navigator.canShare({ files: [file] }) : false;
+          
+          if (canShareFiles) {
+            try {
+              await navigator.share({
+                files: [file],
+                title: `ฉันได้ "${results.title}" ใน VibeQuiz!`,
+              });
+              setIsGeneratingStory(false);
+              return;
+            } catch (error: any) {
+              // User cancelled or error occurred, fall through to download
+              if (error.name !== 'AbortError') {
+                console.log('Share failed, falling back to download:', error);
+              }
+            }
+          }
+        }
+
+        // Fallback: Download the image
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'christmas-character.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+
+        setIsGeneratingStory(false);
+      }, 'image/png');
+    } catch (error) {
+      console.error('Error generating story image:', error);
+      setIsGeneratingStory(false);
+      alert('เกิดข้อผิดพลาดในการสร้างรูปภาพ กรุณาลองอีกครั้ง');
     }
   };
 
@@ -279,13 +355,25 @@ export default function ResultPage() {
           {/* Share Button */}
           <div className="flex justify-center pt-6">
             <button
-              onClick={() => handleShare('instagram')}
-              className="px-12 py-6 rounded-full bg-gradient-to-tr from-[#FFD600] via-[#FF0100] to-[#D800B9] text-white font-bold text-xl flex items-center gap-3 hover:scale-105 transition-transform shadow-lg hover:shadow-xl"
+              onClick={handleShareToStory}
+              disabled={isGeneratingStory}
+              className="px-12 py-6 rounded-full bg-gradient-to-tr from-[#FFD600] via-[#FF0100] to-[#D800B9] text-white font-bold text-xl flex items-center gap-3 hover:scale-105 transition-transform shadow-lg hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-              <span className="material-symbols-outlined text-2xl" aria-hidden="true">
-                share
-              </span>
-              <span>แชร์ไป Story IG!</span>
+              {isGeneratingStory ? (
+                <>
+                  <span className="material-symbols-outlined text-2xl animate-spin" aria-hidden="true">
+                    sync
+                  </span>
+                  <span>กำลังสร้าง Story...</span>
+                </>
+              ) : (
+                <>
+                  <span className="material-symbols-outlined text-2xl" aria-hidden="true">
+                    share
+                  </span>
+                  <span>แชร์ไป Story IG!</span>
+                </>
+              )}
             </button>
           </div>
         </div>
@@ -295,6 +383,85 @@ export default function ResultPage() {
       <footer className="w-full py-8 text-center text-white/30 text-xs">
         <p>© {new Date().getFullYear()} VibeQuiz. Powered by Holiday Spirit & AI.</p>
       </footer>
+
+      {/* Hidden IG Story Template for html2canvas */}
+      {results && (
+        <div
+          id="ig-story-template"
+          className="absolute top-[-9999px] left-[-9999px] z-[-50] bg-background-dark"
+          style={{ width: '1080px', height: '1920px' }}
+        >
+          <div
+            className="w-full h-full flex flex-col items-center justify-center px-16"
+            style={{ paddingTop: '250px', paddingBottom: '250px' }}
+          >
+            {/* Header Logo/Text */}
+            <div className="mb-8">
+              <h2 className="text-white text-2xl font-bold text-center">Who are you on Christmas Day?</h2>
+            </div>
+
+            {/* MBTI Badge */}
+            <div className="mb-6">
+              <span className="inline-block px-6 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white font-bold tracking-widest text-lg">
+                {results.id}
+              </span>
+            </div>
+
+            {/* Character Title */}
+            <h1 className="text-white text-4xl font-black leading-tight text-center mb-8 px-4">
+              {results.title}
+            </h1>
+
+            {/* Character Description */}
+            <p className="text-gray-300 text-2xl text-center mb-8 px-4">
+              {results.description}
+            </p>
+
+            {/* Character Image */}
+            <div className="relative w-96 h-96 mb-8 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20">
+              <Image
+                src={results.image}
+                alt={`${results.title} character illustration`}
+                fill
+                className="object-cover"
+                sizes="384px"
+                unoptimized
+              />
+            </div>
+
+            {/* Key Stats */}
+            <div className="w-full max-w-md mb-8">
+              <h3 className="text-white text-3xl font-bold mb-6 text-center">ค่าพลัง</h3>
+              <div className="flex flex-col gap-4">
+                {results.stats.map((stat, index) => (
+                  <div key={index} className="flex flex-col gap-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-300 text-xl font-medium">
+                        {stat.label}
+                      </span>
+                      <span className="text-white text-xl font-bold">
+                        {stat.value}%
+                      </span>
+                    </div>
+                    {/* Linear Progress Bar */}
+                    <div className="w-full h-4 bg-gray-700 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-primary to-red-600 rounded-full"
+                        style={{ width: `${stat.value}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="mt-auto pt-8">
+              <p className="text-white/60 text-lg text-center">Play at: VibeQuiz</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
