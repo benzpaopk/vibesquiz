@@ -280,9 +280,9 @@ export default function ResultPage() {
           <div className="flex justify-center pt-6">
             <button
               onClick={() => handleShare('instagram')}
-              className="px-8 py-4 rounded-full bg-gradient-to-tr from-[#FFD600] via-[#FF0100] to-[#D800B9] text-white font-bold text-lg flex items-center gap-2 hover:scale-105 transition-transform shadow-lg hover:shadow-xl"
+              className="px-12 py-6 rounded-full bg-gradient-to-tr from-[#FFD600] via-[#FF0100] to-[#D800B9] text-white font-bold text-xl flex items-center gap-3 hover:scale-105 transition-transform shadow-lg hover:shadow-xl"
             >
-              <span className="material-symbols-outlined" aria-hidden="true">
+              <span className="material-symbols-outlined text-2xl" aria-hidden="true">
                 share
               </span>
               <span>แชร์ไป Story IG!</span>
