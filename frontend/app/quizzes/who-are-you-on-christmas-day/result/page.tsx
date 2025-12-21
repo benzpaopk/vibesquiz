@@ -157,7 +157,7 @@ export default function ResultPage() {
           {/* Page Heading */}
           <div className="flex flex-col gap-2 text-center md:text-left animate-fade-in-up">
             <h1 className="text-white text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
-              บุคลิกภาพคริสต์มาสของคุณคือ...
+              คริสต์มาสนี้คุณคือ...
             </h1>
           </div>
 
@@ -170,6 +170,12 @@ export default function ResultPage() {
             <div className="relative flex flex-col lg:flex-row gap-8 lg:gap-12 items-center lg:items-start">
               {/* Text Content (Left) */}
               <div className="flex flex-col gap-4 flex-1 w-full">
+                {/* MBTI Badge */}
+                <div className="flex justify-center">
+                  <span className="inline-block px-4 py-1 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white font-bold tracking-widest text-sm mb-4">
+                    {results.id}
+                  </span>
+                </div>
                 {/* Title and Description merged */}
                 <h1 className="text-xl sm:text-2xl md:text-3xl font-bold leading-relaxed break-words text-center">
                   <span className="text-white">{results.title}</span>{' '}
@@ -270,51 +276,17 @@ export default function ResultPage() {
             </div>
           </div>
 
-          {/* Footer / Share Actions */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-6 border-t border-white/10">
-            <div className="flex flex-col gap-1">
-              <h3 className="text-white text-xl font-bold">เปิดเผยตัวเองให้เพื่อนๆ:</h3>
-              <p className="text-white/50 text-sm">ไม่ต้องกังวล พวกเขาน่าจะรู้อยู่แล้ว</p>
-            </div>
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => handleShare('facebook')}
-                className="size-12 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg"
-                aria-label="Share on Facebook"
-              >
-                <span className="material-symbols-outlined text-2xl" aria-hidden="true">
-                  public
-                </span>
-              </button>
-              <button
-                onClick={() => handleShare('twitter')}
-                className="size-12 rounded-full bg-black border border-white/20 text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg"
-                aria-label="Share on Twitter"
-              >
-                <svg aria-hidden="true" className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </button>
-              <button
-                onClick={() => handleShare('instagram')}
-                className="size-12 rounded-full bg-gradient-to-tr from-[#FFD600] via-[#FF0100] to-[#D800B9] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg"
-                aria-label="Share on Instagram"
-              >
-                <span className="material-symbols-outlined text-2xl" aria-hidden="true">
-                  photo_camera
-                </span>
-              </button>
-              <div className="w-px h-8 bg-white/10 mx-2" aria-hidden="true" />
-              <button
-                onClick={() => handleShare('link')}
-                className="h-12 px-6 rounded-full bg-primary hover:bg-red-600 text-white font-bold flex items-center gap-2 transition-colors shadow-[0_0_20px_rgba(236,19,19,0.4)] hover:shadow-[0_0_30px_rgba(236,19,19,0.6)]"
-              >
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  share
-                </span>
-                <span>{isSharing ? 'คัดลอกลิงก์แล้ว!' : 'แชร์ลิงก์'}</span>
-              </button>
-            </div>
+          {/* Share Button */}
+          <div className="flex justify-center pt-6">
+            <button
+              onClick={() => handleShare('instagram')}
+              className="px-8 py-4 rounded-full bg-gradient-to-tr from-[#FFD600] via-[#FF0100] to-[#D800B9] text-white font-bold text-lg flex items-center gap-2 hover:scale-105 transition-transform shadow-lg hover:shadow-xl"
+            >
+              <span className="material-symbols-outlined" aria-hidden="true">
+                share
+              </span>
+              <span>แชร์ไป Story IG!</span>
+            </button>
           </div>
         </div>
       </main>
